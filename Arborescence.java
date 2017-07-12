@@ -52,8 +52,9 @@ public class Arborescence {
 				}
 				else{
 					
-						
-					if(!list[i].startsWith(".") && !list[i].startsWith("target")){
+					// tous les fichiers que l'on ignore dans le décompte	
+					if(!list[i].startsWith(".") && !list[i].startsWith("target") && !list[i].endsWith(".otf") && !list[i].endsWith(".eot") && !list[i].endsWith(".svg") && !list[i].endsWith(".ttf") && !list[i].endsWith(".woff")
+							&& !list[i].endsWith(".woff2") && !list[i].endsWith(".gif") && !list[i].endsWith(".png") && !list[i].endsWith(".jpg") && !list[i].endsWith(".jpeg") && !list[i].endsWith(".ico") && !list[i].endsWith(".log")){
 						
 					b.append(repertoire+"/"+list[i]).append("\r\n");
 					try {
@@ -122,6 +123,36 @@ public class Arborescence {
 							L[0]=L[0]+StringCompteur(repertoire+"/"+list[i]);
 							System.out.println("Le fichier "+repertoire+"/"+list[i]+" contient "+StringCompteur(repertoire+"/"+list[i])+" lignes.");
 							}
+						if(list[i].endsWith(".launch")){
+						    L[14]=L[14]+StringCompteur(repertoire+"/"+list[i]);
+							L[0]=L[0]+StringCompteur(repertoire+"/"+list[i]);
+							System.out.println("Le fichier "+repertoire+"/"+list[i]+" contient "+StringCompteur(repertoire+"/"+list[i])+" lignes.");
+							}
+						if(list[i].endsWith(".jar")){
+						    L[15]=L[15]+StringCompteur(repertoire+"/"+list[i]);
+							L[0]=L[0]+StringCompteur(repertoire+"/"+list[i]);
+							System.out.println("Le fichier "+repertoire+"/"+list[i]+" contient "+StringCompteur(repertoire+"/"+list[i])+" lignes.");
+							}
+						if(list[i].endsWith(".war")){
+						    L[16]=L[16]+StringCompteur(repertoire+"/"+list[i]);
+							L[0]=L[0]+StringCompteur(repertoire+"/"+list[i]);
+							System.out.println("Le fichier "+repertoire+"/"+list[i]+" contient "+StringCompteur(repertoire+"/"+list[i])+" lignes.");
+							}
+						if(list[i].endsWith(".class")){
+						    L[17]=L[17]+StringCompteur(repertoire+"/"+list[i]);
+							L[0]=L[0]+StringCompteur(repertoire+"/"+list[i]);
+							System.out.println("Le fichier "+repertoire+"/"+list[i]+" contient "+StringCompteur(repertoire+"/"+list[i])+" lignes.");
+							}
+						if(list[i].endsWith(".map")){
+						    L[18]=L[18]+StringCompteur(repertoire+"/"+list[i]);
+							L[0]=L[0]+StringCompteur(repertoire+"/"+list[i]);
+							System.out.println("Le fichier "+repertoire+"/"+list[i]+" contient "+StringCompteur(repertoire+"/"+list[i])+" lignes.");
+							}
+						else{
+							L[25]=L[25]+StringCompteur(repertoire+"/"+list[i]);
+							L[0]=L[0]+StringCompteur(repertoire+"/"+list[i]);
+							System.out.println("Le fichier "+repertoire+"/"+list[i]+" contient "+StringCompteur(repertoire+"/"+list[i])+" lignes.");
+						}
 						
 						
 					} catch (IOException e) {
@@ -136,14 +167,14 @@ public class Arborescence {
 		}
 		}
 		
-		return ("Le projet contient en tout: "+L[0]+" lignes dont "+ L[1]+" en .java, "+L[2]+" lignes en .html, "+L[3]+" lignes en .sql, "+L[4]+" lignes en .properties, "+L[5]+" lignes en .xml, "+L[6]+" lignes en .md, "+L[7]+" lignes en .txt et "+L[8]+" lignes en .jsp, "+L[9]+" lignes en .css, "+L[10]+" lignes en .xslt, "+L[11]+" lignes en .js "+L[12]+" lignes en .sh, "+L[13]+" lignes en .xsl ");
+		return ("Le projet contient en tout: "+L[0]+" lignes dont "+ L[1]+" en .java, "+L[2]+" lignes en .html, "+L[3]+" lignes en .sql, "+L[4]+" lignes en .properties, "+L[5]+" lignes en .xml, "+L[6]+" lignes en .md, "+L[7]+" lignes en .txt et "+L[8]+" lignes en .jsp, "+L[9]+" lignes en .css, "+L[10]+" lignes en .xslt, "+L[11]+" lignes en .js "+L[12]+" lignes en .sh, "+L[13]+" lignes en .xsl, "+L[14]+" lignes en .launch, "+L[25]+" lignes de fichiers sans extension."+L[15]+" lignes en .jar, "+L[16]+" lignes en .war, "+L[17]+" lignes en .class, "+L[18]+" lignes en .map");
 		
 	}
 
 	public static void main (String[] args){
-		int[] lesfichiers = new int[14];
+		int[] lesfichiers = new int[40];
 		StringBuffer fichiers = new StringBuffer();
-		System.out.println(recurseDirs("D:/Users/beghinb/lutece-core", fichiers, lesfichiers));
+		System.out.println(recurseDirs("D:/Users/beghinb/lutece-dev3", fichiers, lesfichiers));
 		
 	}
 
