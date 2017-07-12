@@ -7,8 +7,8 @@ import java.io.LineNumberReader;
 
 public class Arborescence {
 
-	//Prend en paramÃ¨tre le chemin
-	public static void StringCompteur(String docPath) throws IOException{
+	//Prend en paramètre le chemin
+	public static int StringCompteur(String docPath) throws IOException{
 		
 		int count = 0;
 		
@@ -20,14 +20,14 @@ public class Arborescence {
 			{
 				count = l.getLineNumber();
 			}
-			System.out.println("Le fichier "+docPath+" contient "+count+" lignes.");
+			
+			return(count);
 		}
 	
-	public static StringBuffer recurseDirs(String repertoire, StringBuffer b){
+	public static String recurseDirs(String repertoire, StringBuffer b, int[] L){
 		File fichier = new File(repertoire);
 		String list[] ={};
 		StringBuffer a = new StringBuffer();
-		String L[]={};
 		a=a.append(" ");
 		
 		
@@ -47,16 +47,58 @@ public class Arborescence {
 					
 					
 					
-					recurseDirs(repertoire+"/" +list[i], b);
+					recurseDirs(repertoire+"/" +list[i], b, L);
 					
 				}
 				else{
 					
 						
-					
+					if(!list[i].startsWith(".") && !list[i].startsWith("target")){
+						
 					b.append(repertoire+"/"+list[i]).append("\r\n");
 					try {
-						StringCompteur(repertoire+"/"+list[i]);
+						if(list[i].endsWith(".java")){
+					    L[1]=L[1]+StringCompteur(repertoire+"/"+list[i]);
+						L[0]=L[0]+StringCompteur(repertoire+"/"+list[i]);
+						System.out.println("Le fichier "+repertoire+"/"+list[i]+" contient "+StringCompteur(repertoire+"/"+list[i])+" lignes.");
+						}
+						if(list[i].endsWith(".html")){
+						    L[2]=L[2]+StringCompteur(repertoire+"/"+list[i]);
+							L[0]=L[0]+StringCompteur(repertoire+"/"+list[i]);
+							System.out.println("Le fichier "+repertoire+"/"+list[i]+" contient "+StringCompteur(repertoire+"/"+list[i])+" lignes.");
+							}
+						if(list[i].endsWith(".sql")){
+						    L[3]=L[3]+StringCompteur(repertoire+"/"+list[i]);
+							L[0]=L[0]+StringCompteur(repertoire+"/"+list[i]);
+							System.out.println("Le fichier "+repertoire+"/"+list[i]+" contient "+StringCompteur(repertoire+"/"+list[i])+" lignes.");
+							}
+						if(list[i].endsWith(".properties")){
+						    L[4]=L[4]+StringCompteur(repertoire+"/"+list[i]);
+							L[0]=L[0]+StringCompteur(repertoire+"/"+list[i]);
+							System.out.println("Le fichier "+repertoire+"/"+list[i]+" contient "+StringCompteur(repertoire+"/"+list[i])+" lignes.");
+							}
+						if(list[i].endsWith(".xml")){
+						    L[5]=L[5]+StringCompteur(repertoire+"/"+list[i]);
+							L[0]=L[0]+StringCompteur(repertoire+"/"+list[i]);
+							System.out.println("Le fichier "+repertoire+"/"+list[i]+" contient "+StringCompteur(repertoire+"/"+list[i])+" lignes.");
+							}
+						if(list[i].endsWith(".md")){
+						    L[6]=L[6]+StringCompteur(repertoire+"/"+list[i]);
+							L[0]=L[0]+StringCompteur(repertoire+"/"+list[i]);
+							System.out.println("Le fichier "+repertoire+"/"+list[i]+" contient "+StringCompteur(repertoire+"/"+list[i])+" lignes.");
+							}
+						if(list[i].endsWith(".txt")){
+						    L[7]=L[7]+StringCompteur(repertoire+"/"+list[i]);
+							L[0]=L[0]+StringCompteur(repertoire+"/"+list[i]);
+							System.out.println("Le fichier "+repertoire+"/"+list[i]+" contient "+StringCompteur(repertoire+"/"+list[i])+" lignes.");
+							}
+						if(list[i].endsWith(".jsp")){
+						    L[8]=L[8]+StringCompteur(repertoire+"/"+list[i]);
+							L[0]=L[0]+StringCompteur(repertoire+"/"+list[i]);
+							System.out.println("Le fichier "+repertoire+"/"+list[i]+" contient "+StringCompteur(repertoire+"/"+list[i])+" lignes.");
+							}
+						
+						
 					} catch (IOException e) {
 						e.printStackTrace();
 					}
@@ -67,15 +109,16 @@ public class Arborescence {
 			}
 			
 		}
+		}
 		
-		StringBuffer c = new StringBuffer();
-		return c;
-
+		return ("Le projet contient en tout: "+L[0]+" lignes dont "+ L[1]+" en .java, "+L[2]+" lignes en .html, "+L[3]+" lignes en .sql, "+L[4]+" lignes en .properties, "+L[5]+" lignes en .xml, "+L[6]+" lignes en .md, "+L[7]+" lignes en .txt et "+L[8]+" lignes en .jsp.");
+		
 	}
 
 	public static void main (String[] args){
+		int[] lesfichiers = new int[9];
 		StringBuffer fichiers = new StringBuffer();
-		System.out.println(recurseDirs("D:/Users/beghinb/lutece-dev4", fichiers));
+		System.out.println(recurseDirs("/home/oscar/nouveau tp/lutece-dev-example", fichiers, lesfichiers));
 		
 	}
 
