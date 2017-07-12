@@ -7,7 +7,7 @@ import java.io.LineNumberReader;
 
 public class Arborescence {
 
-	//Prend en paramÃ¨tre le chemin
+	// Prend en paramètre le chemin
 	public static void StringCompteur(String docPath) throws IOException{
 		
 		int count = 0;
