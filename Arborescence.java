@@ -7,7 +7,7 @@ import java.io.LineNumberReader;
 
 public class Arborescence {
 
-	// Prend en paramètre le chemin
+	//Prend en paramÃ¨tre le chemin
 	public static void StringCompteur(String docPath) throws IOException{
 		
 		int count = 0;
@@ -23,10 +23,11 @@ public class Arborescence {
 			System.out.println("Le fichier "+docPath+" contient "+count+" lignes.");
 		}
 	
-	public static String recurseDirs(String repertoire, StringBuffer b, int[] L){
+	public static StringBuffer recurseDirs(String repertoire, StringBuffer b){
 		File fichier = new File(repertoire);
 		String list[] ={};
 		StringBuffer a = new StringBuffer();
+		String L[]={};
 		a=a.append(" ");
 		
 		
@@ -46,14 +47,13 @@ public class Arborescence {
 					
 					
 					
-					recurseDirs(repertoire+"/" +list[i], b, L);
+					recurseDirs(repertoire+"/" +list[i], b);
 					
 				}
 				else{
 					
 						
-					if(!list[i].startsWith(".") && !list[i].startsWith("target")){
-						
+					
 					b.append(repertoire+"/"+list[i]).append("\r\n");
 					try {
 						StringCompteur(repertoire+"/"+list[i]);
@@ -67,16 +67,15 @@ public class Arborescence {
 			}
 			
 		}
-		}
 		
-		return " ";
-		
+		StringBuffer c = new StringBuffer();
+		return c;
+
 	}
 
 	public static void main (String[] args){
-		int[] lesfichiers = new int[8];
 		StringBuffer fichiers = new StringBuffer();
-		System.out.println(recurseDirs("/home/oscar/nouveau tp/lutece-dev-example", fichiers, lesfichiers));
+		System.out.println(recurseDirs("D:/Users/beghinb/lutece-dev4", fichiers));
 		
 	}
 
