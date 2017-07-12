@@ -97,6 +97,31 @@ public class Arborescence {
 							L[0]=L[0]+StringCompteur(repertoire+"/"+list[i]);
 							System.out.println("Le fichier "+repertoire+"/"+list[i]+" contient "+StringCompteur(repertoire+"/"+list[i])+" lignes.");
 							}
+						if(list[i].endsWith(".css")){
+						    L[9]=L[9]+StringCompteur(repertoire+"/"+list[i]);
+							L[0]=L[0]+StringCompteur(repertoire+"/"+list[i]);
+							System.out.println("Le fichier "+repertoire+"/"+list[i]+" contient "+StringCompteur(repertoire+"/"+list[i])+" lignes.");
+							}
+						if(list[i].endsWith(".xslt")){
+						    L[10]=L[10]+StringCompteur(repertoire+"/"+list[i]);
+							L[0]=L[0]+StringCompteur(repertoire+"/"+list[i]);
+							System.out.println("Le fichier "+repertoire+"/"+list[i]+" contient "+StringCompteur(repertoire+"/"+list[i])+" lignes.");
+							}
+						if(list[i].endsWith(".js")){
+						    L[11]=L[11]+StringCompteur(repertoire+"/"+list[i]);
+							L[0]=L[0]+StringCompteur(repertoire+"/"+list[i]);
+							System.out.println("Le fichier "+repertoire+"/"+list[i]+" contient "+StringCompteur(repertoire+"/"+list[i])+" lignes.");
+							}
+						if(list[i].endsWith(".sh")){
+						    L[12]=L[12]+StringCompteur(repertoire+"/"+list[i]);
+							L[0]=L[0]+StringCompteur(repertoire+"/"+list[i]);
+							System.out.println("Le fichier "+repertoire+"/"+list[i]+" contient "+StringCompteur(repertoire+"/"+list[i])+" lignes.");
+							}
+						if(list[i].endsWith(".xsl")){
+						    L[13]=L[13]+StringCompteur(repertoire+"/"+list[i]);
+							L[0]=L[0]+StringCompteur(repertoire+"/"+list[i]);
+							System.out.println("Le fichier "+repertoire+"/"+list[i]+" contient "+StringCompteur(repertoire+"/"+list[i])+" lignes.");
+							}
 						
 						
 					} catch (IOException e) {
@@ -111,14 +136,14 @@ public class Arborescence {
 		}
 		}
 		
-		return ("Le projet contient en tout: "+L[0]+" lignes dont "+ L[1]+" en .java, "+L[2]+" lignes en .html, "+L[3]+" lignes en .sql, "+L[4]+" lignes en .properties, "+L[5]+" lignes en .xml, "+L[6]+" lignes en .md, "+L[7]+" lignes en .txt et "+L[8]+" lignes en .jsp.");
+		return ("Le projet contient en tout: "+L[0]+" lignes dont "+ L[1]+" en .java, "+L[2]+" lignes en .html, "+L[3]+" lignes en .sql, "+L[4]+" lignes en .properties, "+L[5]+" lignes en .xml, "+L[6]+" lignes en .md, "+L[7]+" lignes en .txt et "+L[8]+" lignes en .jsp, "+L[9]+" lignes en .css, "+L[10]+" lignes en .xslt, "+L[11]+" lignes en .js "+L[12]+" lignes en .sh, "+L[13]+" lignes en .xsl ");
 		
 	}
 
 	public static void main (String[] args){
-		int[] lesfichiers = new int[9];
+		int[] lesfichiers = new int[14];
 		StringBuffer fichiers = new StringBuffer();
-		System.out.println(recurseDirs("/home/oscar/nouveau tp/lutece-dev-example", fichiers, lesfichiers));
+		System.out.println(recurseDirs("D:/Users/beghinb/lutece-core", fichiers, lesfichiers));
 		
 	}
 
