@@ -174,7 +174,7 @@ public class Arborescence {
 	public static void main (String[] args){
 		int[] lesfichiers = new int[40];
 		StringBuffer fichiers = new StringBuffer();
-		System.out.println(recurseDirs("D:/Users/beghinb/lutece-dev3", fichiers, lesfichiers));
+		System.out.println(recurseDirs("D:/Users/beghinb/lutece-dev-module-example-elastic/.settings", fichiers, lesfichiers));
 		
 	}
 
