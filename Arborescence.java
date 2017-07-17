@@ -24,7 +24,7 @@ public class Arborescence {
 			return(count);
 		}
 	
-	public static String recurseDirs(String repertoire, StringBuffer b, int[] L, long [] G){
+	public static String recurseDirs(String repertoire, StringBuffer b, int[] L, float [] G){
 		File fichier = new File(repertoire);
 		String list[] ={};
 		StringBuffer a = new StringBuffer();
@@ -205,14 +205,19 @@ public class Arborescence {
 			
 		}
 		}
-		G[0]=G[0];
-		return ("Le projet contient en tout: "+L[0]+" lignes  et a une taille de "+G[0]+ "Mo dont " + L[1]+" lignes en .java qui font "+G[1]+"Mo, "+L[2]+" lignes en .html qui font "+G[2]+"Mo, "+L[3]+" lignes en .sql qui font "+G[3]+"Mo, "+L[4]+" lignes en .properties qui font "+G[4]+"Mo, "+L[5]+" lignes en .xml qui font "+G[5]+"Mo, "+L[6]+" lignes en .md qui font "+G[6]+"Mo, "+L[7]+" lignes en .txt qui font "+G[7]+"Mo, "+L[8]+" lignes en .jsp qui font "+G[8]+"Mo, "+L[9]+" lignes en .css qui font "+G[9]+"Mo, "+L[10]+" lignes en .xslt qui font "+G[10]+"Mo, "+L[11]+" lignes en .js qui font "+G[11]+"Mo, "+L[12]+" lignes en .sh qui font "+G[12]+"Mo, "+L[13]+" lignes en .xsl qui font "+G[13]+"Mo, "+L[14]+" lignes en .launch qui font "+G[14]+"Mo, "+L[25]+" lignes de fichiers sans extension qui font "+G[25]+"Mo, "+L[15]+" lignes en .jar qui font "+G[15]+"Mo, "+L[16]+" lignes en .war qui font "+G[16]+"Mo, "+L[17]+" lignes en .class qui font "+G[17]+"Mo, "+L[18]+" et lignes en .map qui font "+G[18]+".");
+		
+		return ("Le projet contient en tout: "+L[0]+" lignes  et a une taille de "+G[0]/1024+ "ko dont " + L[1]+" lignes en .java qui font "+G[1]/1024+"ko, "+L[2]+" lignes en .html qui font "+G[2]/1024+"ko, "
+		+L[3]+" lignes en .sql qui font "+G[3]/1024+"ko, "+L[4]+" lignes en .properties qui font "+G[4]/1024+"ko, "+L[5]+" lignes en .xml qui font "+G[5]/1024+"ko, "+L[6]+" lignes en .md qui font "+G[6]/1024+"ko, "
+		+L[7]+" lignes en .txt qui font "+G[7]/1024+"ko, "+L[8]+" lignes en .jsp qui font "+G[8]/1024+"ko, "+L[9]+" lignes en .css qui font "+G[9]/1024+"ko, "+L[10]+" lignes en .xslt qui font "+G[10]/1024+"ko, "
+		+L[11]+" lignes en .js qui font "+G[11]/1024+"ko, "+L[12]+" lignes en .sh qui font "+G[12]/1024+"ko, "+L[13]+" lignes en .xsl qui font "+G[13]/1024+"ko, "+L[14]+" lignes en .launch qui font "+G[14]/1024+"ko, "
+		+L[25]+" lignes de fichiers sans extension qui font "+G[25]/1024+"ko, "+L[15]+" lignes en .jar qui font "+G[15]/1024+"ko, "+L[16]+" lignes en .war qui font "+G[16]/1024+"ko, "+L[17]+" lignes en .class qui font "+G[17]/1024+"ko, "
+		+L[18]+" et lignes en .map qui font "+G[18]/1024+"k0."+"\r\n"+"Oscar est mon héros" );
 		
 	}
 
 	public static void main (String[] args){
 		int[] lesfichiers = new int[40];
-		long [] taille= new long [40];
+		float [] taille= new float [40];
 		StringBuffer fichiers = new StringBuffer();
 		System.out.println(recurseDirs("/home/oscar/nouveau tp/lutece-dev-example", fichiers, lesfichiers, taille));
 		
