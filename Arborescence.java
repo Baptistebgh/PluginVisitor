@@ -209,7 +209,7 @@ public class Arborescence {
 		return ("Le projet contient en tout: "+L[0]+" lignes  et a une taille de "+G[0]/1024+ "ko dont " + L[1]+" lignes en .java qui font "+G[1]/1024+"ko, "+L[2]+" lignes en .html qui font "+G[2]/1024+"ko, "
 		+L[3]+" lignes en .sql qui font "+G[3]/1024+"ko, "+L[4]+" lignes en .properties qui font "+G[4]/1024+"ko, "+L[5]+" lignes en .xml qui font "+G[5]/1024+"ko, "+L[6]+" lignes en .md qui font "+G[6]/1024+"ko, "
 		+L[7]+" lignes en .txt qui font "+G[7]/1024+"ko, "+L[8]+" lignes en .jsp qui font "+G[8]/1024+"ko, "+L[9]+" lignes en .css qui font "+G[9]/1024+"ko, "+L[10]+" lignes en .xslt qui font "+G[10]/1024+"ko, "
-		+L[11]+" lignes en .js qui font "+G[11]/1024+"ko, "+L[12]+" lignes en .sh qui font "+G[12]/1024+"ko, "+L[13]+" lignes en .xsl qui font "+G[13]/1024+"ko, "+L[14]+" lignes en .launch qui font "+G[14]/1024+"ko, "
+		+L[11]+" lignes en .js qui font "+G[11]/1024+"ko, "+"\r\n"+"Bpatiste suce des bites de chèvres."+L[12]+" lignes en .sh qui font "+G[12]/1024+"ko, "+L[13]+" lignes en .xsl qui font "+G[13]/1024+"ko, "+L[14]+" lignes en .launch qui font "+G[14]/1024+"ko, "
 		+L[25]+" lignes de fichiers sans extension qui font "+G[25]/1024+"ko, "+L[15]+" lignes en .jar qui font "+G[15]/1024+"ko, "+L[16]+" lignes en .war qui font "+G[16]/1024+"ko, "+L[17]+" lignes en .class qui font "+G[17]/1024+"ko, "
 		+L[18]+" et lignes en .map qui font "+G[18]/1024+"k0."+"\r\n"+"Oscar est mon héros" );
 		
