@@ -7,7 +7,7 @@ import java.io.LineNumberReader;
 
 public class Arborescence {
 
-	//Prend en paramètre le chemin
+	//Prend en paramï¿½tre le chemin
 	public static int StringCompteur(String docPath) throws IOException{
 		
 		int count = 0;
@@ -24,7 +24,7 @@ public class Arborescence {
 			return(count);
 		}
 	
-	public static String recurseDirs(String repertoire, StringBuffer b, int[] L){
+	public static String recurseDirs(String repertoire, StringBuffer b, int[] L, long [] G){
 		File fichier = new File(repertoire);
 		String list[] ={};
 		StringBuffer a = new StringBuffer();
@@ -47,12 +47,12 @@ public class Arborescence {
 					
 					
 					
-					recurseDirs(repertoire+"/" +list[i], b, L);
+					recurseDirs(repertoire+"/" +list[i], b, L,G);
 					
 				}
 				else{
 					
-					// tous les fichiers que l'on ignore dans le décompte	
+					// tous les fichiers que l'on ignore dans le dï¿½compte	
 					if(!list[i].startsWith(".") && !list[i].startsWith("target") && !list[i].endsWith(".otf") && !list[i].endsWith(".eot") && !list[i].endsWith(".svg") && !list[i].endsWith(".ttf") && !list[i].endsWith(".woff")
 							&& !list[i].endsWith(".woff2") && !list[i].endsWith(".gif") && !list[i].endsWith(".png") && !list[i].endsWith(".jpg") && !list[i].endsWith(".jpeg") && !list[i].endsWith(".ico") && !list[i].endsWith(".log")){
 						
@@ -62,96 +62,134 @@ public class Arborescence {
 					    L[1]=L[1]+StringCompteur(repertoire+"/"+list[i]);
 						L[0]=L[0]+StringCompteur(repertoire+"/"+list[i]);
 						System.out.println("Le fichier "+repertoire+"/"+list[i]+" contient "+StringCompteur(repertoire+"/"+list[i])+" lignes.");
+						G[0]=G[0]+var.length();
+						G[1]=G[1]+var.length();
 						}
 						if(list[i].endsWith(".html")){
 						    L[2]=L[2]+StringCompteur(repertoire+"/"+list[i]);
 							L[0]=L[0]+StringCompteur(repertoire+"/"+list[i]);
 							System.out.println("Le fichier "+repertoire+"/"+list[i]+" contient "+StringCompteur(repertoire+"/"+list[i])+" lignes.");
+							G[0]=G[0]+var.length();
+							G[2]=G[2]+var.length();
 							}
 						if(list[i].endsWith(".sql")){
 						    L[3]=L[3]+StringCompteur(repertoire+"/"+list[i]);
 							L[0]=L[0]+StringCompteur(repertoire+"/"+list[i]);
 							System.out.println("Le fichier "+repertoire+"/"+list[i]+" contient "+StringCompteur(repertoire+"/"+list[i])+" lignes.");
+							G[0]=G[0]+var.length();
+							G[3]=G[3]+var.length();
 							}
 						if(list[i].endsWith(".properties")){
 						    L[4]=L[4]+StringCompteur(repertoire+"/"+list[i]);
 							L[0]=L[0]+StringCompteur(repertoire+"/"+list[i]);
 							System.out.println("Le fichier "+repertoire+"/"+list[i]+" contient "+StringCompteur(repertoire+"/"+list[i])+" lignes.");
+							G[0]=G[0]+var.length();
+							G[4]=G[4]+var.length();
 							}
 						if(list[i].endsWith(".xml")){
 						    L[5]=L[5]+StringCompteur(repertoire+"/"+list[i]);
 							L[0]=L[0]+StringCompteur(repertoire+"/"+list[i]);
 							System.out.println("Le fichier "+repertoire+"/"+list[i]+" contient "+StringCompteur(repertoire+"/"+list[i])+" lignes.");
+							G[0]=G[0]+var.length();
+							G[5]=G[5]+var.length();
 							}
 						if(list[i].endsWith(".md")){
 						    L[6]=L[6]+StringCompteur(repertoire+"/"+list[i]);
 							L[0]=L[0]+StringCompteur(repertoire+"/"+list[i]);
 							System.out.println("Le fichier "+repertoire+"/"+list[i]+" contient "+StringCompteur(repertoire+"/"+list[i])+" lignes.");
+							G[0]=G[0]+var.length();
+							G[6]=G[6]+var.length();
 							}
 						if(list[i].endsWith(".txt")){
 						    L[7]=L[7]+StringCompteur(repertoire+"/"+list[i]);
 							L[0]=L[0]+StringCompteur(repertoire+"/"+list[i]);
 							System.out.println("Le fichier "+repertoire+"/"+list[i]+" contient "+StringCompteur(repertoire+"/"+list[i])+" lignes.");
+							G[0]=G[0]+var.length();
+							G[7]=G[7]+var.length();
 							}
 						if(list[i].endsWith(".jsp")){
 						    L[8]=L[8]+StringCompteur(repertoire+"/"+list[i]);
 							L[0]=L[0]+StringCompteur(repertoire+"/"+list[i]);
 							System.out.println("Le fichier "+repertoire+"/"+list[i]+" contient "+StringCompteur(repertoire+"/"+list[i])+" lignes.");
+							G[0]=G[0]+var.length();
+							G[8]=G[8]+var.length();
 							}
 						if(list[i].endsWith(".css")){
 						    L[9]=L[9]+StringCompteur(repertoire+"/"+list[i]);
 							L[0]=L[0]+StringCompteur(repertoire+"/"+list[i]);
 							System.out.println("Le fichier "+repertoire+"/"+list[i]+" contient "+StringCompteur(repertoire+"/"+list[i])+" lignes.");
+							G[0]=G[0]+var.length();
+							G[9]=G[9]+var.length();
 							}
 						if(list[i].endsWith(".xslt")){
 						    L[10]=L[10]+StringCompteur(repertoire+"/"+list[i]);
 							L[0]=L[0]+StringCompteur(repertoire+"/"+list[i]);
 							System.out.println("Le fichier "+repertoire+"/"+list[i]+" contient "+StringCompteur(repertoire+"/"+list[i])+" lignes.");
+							G[0]=G[0]+var.length();
+							G[10]=G[10]+var.length();
 							}
 						if(list[i].endsWith(".js")){
 						    L[11]=L[11]+StringCompteur(repertoire+"/"+list[i]);
 							L[0]=L[0]+StringCompteur(repertoire+"/"+list[i]);
 							System.out.println("Le fichier "+repertoire+"/"+list[i]+" contient "+StringCompteur(repertoire+"/"+list[i])+" lignes.");
+							G[0]=G[0]+var.length();
+							G[11]=G[11]+var.length();
 							}
 						if(list[i].endsWith(".sh")){
 						    L[12]=L[12]+StringCompteur(repertoire+"/"+list[i]);
 							L[0]=L[0]+StringCompteur(repertoire+"/"+list[i]);
 							System.out.println("Le fichier "+repertoire+"/"+list[i]+" contient "+StringCompteur(repertoire+"/"+list[i])+" lignes.");
+							G[0]=G[0]+var.length();
+							G[12]=G[12]+var.length();
 							}
 						if(list[i].endsWith(".xsl")){
 						    L[13]=L[13]+StringCompteur(repertoire+"/"+list[i]);
 							L[0]=L[0]+StringCompteur(repertoire+"/"+list[i]);
 							System.out.println("Le fichier "+repertoire+"/"+list[i]+" contient "+StringCompteur(repertoire+"/"+list[i])+" lignes.");
+							G[0]=G[0]+var.length();
+							G[13]=G[13]+var.length();
 							}
 						if(list[i].endsWith(".launch")){
 						    L[14]=L[14]+StringCompteur(repertoire+"/"+list[i]);
 							L[0]=L[0]+StringCompteur(repertoire+"/"+list[i]);
 							System.out.println("Le fichier "+repertoire+"/"+list[i]+" contient "+StringCompteur(repertoire+"/"+list[i])+" lignes.");
+							G[0]=G[0]+var.length();
+							G[14]=G[14]+var.length();
 							}
 						if(list[i].endsWith(".jar")){
 						    L[15]=L[15]+StringCompteur(repertoire+"/"+list[i]);
 							L[0]=L[0]+StringCompteur(repertoire+"/"+list[i]);
 							System.out.println("Le fichier "+repertoire+"/"+list[i]+" contient "+StringCompteur(repertoire+"/"+list[i])+" lignes.");
+							G[0]=G[0]+var.length();
+							G[15]=G[15]+var.length();
 							}
 						if(list[i].endsWith(".war")){
 						    L[16]=L[16]+StringCompteur(repertoire+"/"+list[i]);
 							L[0]=L[0]+StringCompteur(repertoire+"/"+list[i]);
 							System.out.println("Le fichier "+repertoire+"/"+list[i]+" contient "+StringCompteur(repertoire+"/"+list[i])+" lignes.");
+							G[0]=G[0]+var.length();
+							G[16]=G[16]+var.length();
 							}
 						if(list[i].endsWith(".class")){
 						    L[17]=L[17]+StringCompteur(repertoire+"/"+list[i]);
 							L[0]=L[0]+StringCompteur(repertoire+"/"+list[i]);
 							System.out.println("Le fichier "+repertoire+"/"+list[i]+" contient "+StringCompteur(repertoire+"/"+list[i])+" lignes.");
+							G[0]=G[0]+var.length();
+							G[17]=G[17]+var.length();
 							}
 						if(list[i].endsWith(".map")){
 						    L[18]=L[18]+StringCompteur(repertoire+"/"+list[i]);
 							L[0]=L[0]+StringCompteur(repertoire+"/"+list[i]);
 							System.out.println("Le fichier "+repertoire+"/"+list[i]+" contient "+StringCompteur(repertoire+"/"+list[i])+" lignes.");
+							G[0]=G[0]+var.length();
+							G[18]=G[18]+var.length();
 							}
 						else{
 							L[25]=L[25]+StringCompteur(repertoire+"/"+list[i]);
 							L[0]=L[0]+StringCompteur(repertoire+"/"+list[i]);
 							System.out.println("Le fichier "+repertoire+"/"+list[i]+" contient "+StringCompteur(repertoire+"/"+list[i])+" lignes.");
+							G[0]=G[0]+var.length();
+							G[25]=G[25]+var.length();
 						}
 						
 						
@@ -166,16 +204,18 @@ public class Arborescence {
 			
 		}
 		}
-		
-		return ("Le projet contient en tout: "+L[0]+" lignes dont "+ L[1]+" en .java, "+L[2]+" lignes en .html, "+L[3]+" lignes en .sql, "+L[4]+" lignes en .properties, "+L[5]+" lignes en .xml, "+L[6]+" lignes en .md, "+L[7]+" lignes en .txt et "+L[8]+" lignes en .jsp, "+L[9]+" lignes en .css, "+L[10]+" lignes en .xslt, "+L[11]+" lignes en .js "+L[12]+" lignes en .sh, "+L[13]+" lignes en .xsl, "+L[14]+" lignes en .launch, "+L[25]+" lignes de fichiers sans extension."+L[15]+" lignes en .jar, "+L[16]+" lignes en .war, "+L[17]+" lignes en .class, "+L[18]+" lignes en .map");
+		G[0]=G[0];
+		return ("Le projet contient en tout: "+L[0]+" lignes  et a une taille de "+G[0]+ "o dont " + L[1]+" lignes en .java qui font "+G[1]+"o, "+L[2]+" lignes en .html qui font "+G[2]+"Mo, "+L[3]+" lignes en .sql qui font "+G[3]+"o, "+L[4]+" lignes en .properties qui font "+G[4]+"o, "+L[5]+" lignes en .xml qui font "+G[5]+"o, "+L[6]+" lignes en .md qui font "+G[6]+"Mo, "+L[7]+" lignes en .txt qui font "+G[7]+"Mo, "+L[8]+" lignes en .jsp qui font "+G[8]+"Mo, "+L[9]+" lignes en .css qui font "+G[9]+"Mo, "+L[10]+" lignes en .xslt qui font "+G[10]+"Mo, "+L[11]+" lignes en .js qui font "+G[11]+"Mo, "+L[12]+" lignes en .sh qui font "+G[12]+"Mo, "+L[13]+" lignes en .xsl qui font "+G[13]+"Mo, "+L[14]+" lignes en .launch qui font "+G[14]+"Mo, "+L[25]+" lignes de fichiers sans extension qui font "+G[25]+"Mo, "+L[15]+" lignes en .jar qui font "+G[15]+"Mo, "+L[16]+" lignes en .war qui font "+G[16]+"Mo, "+L[17]+" lignes en .class qui font "+G[17]+"Mo, "+L[18]+" et lignes en .map qui font "+G[18]+"Mo.");
 		
 	}
 
 	public static void main (String[] args){
 		int[] lesfichiers = new int[40];
+		long [] taille= new long [40];
 		StringBuffer fichiers = new StringBuffer();
-		System.out.println(recurseDirs("D:/Users/beghinb/lutece-dev-module-example-elastic/.settings", fichiers, lesfichiers));
 		
+		System.out.println(recurseDirs("D:/Users/beghinb/PluginVisitor", fichiers, lesfichiers,taille));
+
 	}
 
 }
