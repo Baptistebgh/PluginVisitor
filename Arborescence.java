@@ -58,9 +58,7 @@ public class Arborescence {
 					if(!list[i].startsWith(".") && !list[i].startsWith("target") && !list[i].endsWith(".otf") && !list[i].endsWith(".eot") && !list[i].endsWith(".svg") && !list[i].endsWith(".ttf") && !list[i].endsWith(".woff")
 							&& !list[i].endsWith(".woff2") && !list[i].endsWith(".gif") && !list[i].endsWith(".png") && !list[i].endsWith(".jpg") && !list[i].endsWith(".jpeg") && !list[i].endsWith(".ico") && !list[i].endsWith(".log")){
 						
-					b.append(repertoire+"/"+list[i]).append("\r\n");}
-					
-					else if (L.containsKey(list[i].substring(list[i].lastIndexOf(".")))){
+					if (L.containsKey(list[i].substring(list[i].lastIndexOf(".")))){
 							int h = (int) L.get(list[i].substring(list[i].lastIndexOf(".")));
 							try {
 								h=h+StringCompteur(repertoire+"/"+list[i]);
@@ -82,10 +80,14 @@ public class Arborescence {
 					else{
 						try {
 							L.put(list[i].substring(list[i].lastIndexOf(".")),StringCompteur(repertoire+"/"+list[i]));
+							c=c+StringCompteur(repertoire+"/"+list[i]);
+							L.put(total,c);
+							
 						} catch (IOException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
+						
 					}
 					
 						
@@ -97,12 +99,13 @@ public class Arborescence {
 				
 			}
 			
-		}
+			}
+			}
 		
 		
 		return L;
 
-		
+				
 	}
 
 	public static void main (String[] args){
@@ -112,7 +115,7 @@ public class Arborescence {
 		lesfichiers.put("total", valeurtotal);
 		float [] taille= new float [40];
 		StringBuffer fichiers = new StringBuffer();
-		System.out.println(recurseDirs(valeurtotal, total,"/home/oscar/nouveau tp/lutece-dev-example", fichiers, lesfichiers));
+		System.out.println(recurseDirs(valeurtotal, total,"D:/Users/beghinb/lutece-dev4", fichiers, lesfichiers));
 		
 	}
 
