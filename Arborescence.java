@@ -39,11 +39,8 @@ public class Arborescence {
 		
 			for (int i = 0; i < list.length ; i++)
 			{
-				
-				
-				
-				
-				
+				System.out.println(L.get(total));
+					
 				File var= new File(repertoire+ File.separatorChar + list[i]);
 				if(var.isDirectory() && !list[i].startsWith(".") && !list[i].startsWith("target")){
 					
@@ -60,27 +57,26 @@ public class Arborescence {
 				    if(!list[i].contains(".")){
 							try {
 								sansextension=sansextension+StringCompteur(repertoire+"/"+list[i]);
-							} catch (IOException e) {
-								// TODO Auto-generated catch block
-								e.printStackTrace();
-							}
-							L.put(sansex,sansextension);
-						}
-					else if (L.containsKey(list[i].substring(list[i].lastIndexOf(".")))){
-							int h = (int) L.get(list[i].substring(list[i].lastIndexOf(".")));
-							try {
-								h=h+StringCompteur(repertoire+"/"+list[i]);
-							} catch (IOException e) {
-								// TODO Auto-generated catch block
-								e.printStackTrace();
-							}
-							L.put(list[i].substring(list[i].lastIndexOf(".")),h);
-							try {
+								L.put(sansex,sansextension);
 								c=c+StringCompteur(repertoire+"/"+list[i]);
 							} catch (IOException e) {
 								// TODO Auto-generated catch block
 								e.printStackTrace();
 							}
+							L.put(total,c);
+						}
+					else if (L.containsKey(list[i].substring(list[i].lastIndexOf(".")))){
+							int h = (int) L.get(list[i].substring(list[i].lastIndexOf(".")));
+							try {
+								h=h+StringCompteur(repertoire+"/"+list[i]);
+								L.put(list[i].substring(list[i].lastIndexOf(".")),h);
+								c=c+StringCompteur(repertoire+"/"+list[i]);
+								
+							} catch (IOException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+		
 							L.put(total,c);
 								
 						
@@ -99,22 +95,15 @@ public class Arborescence {
 						
 					}
 					
-					
-						
-						
-					
-						
-					
 				}
 				
 			}
 			
 			}
-			}
+	}
 		
 		
 		return L;
-
 				
 	}
 
@@ -129,7 +118,6 @@ public class Arborescence {
 		float [] taille= new float [40];
 		StringBuffer fichiers = new StringBuffer();
 		System.out.println(recurseDirs(valeurtotal, sansextension,sansex, total,"D:/Users/beghinb/lutece-dev4", fichiers, lesfichiers));
-		
 	}
 
 }
