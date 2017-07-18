@@ -26,7 +26,7 @@ public class Arborescence {
 			return(count);
 		}
 	
-	public static HashMap  recurseDirs(int c, String total, String repertoire, StringBuffer b, HashMap L){
+	public static HashMap  recurseDirs(int c,int sansextension,String sansex, String total, String repertoire, StringBuffer b, HashMap L){
 		File fichier = new File(repertoire);
 		String list[] ={};
 		StringBuffer a = new StringBuffer();
@@ -49,7 +49,7 @@ public class Arborescence {
 					
 					
 					
-					recurseDirs(c,total,repertoire+"/" +list[i], b, L);
+					recurseDirs(c,sansextension, sansex, total,repertoire+"/" +list[i], b, L);
 					
 				}
 				else{
@@ -57,8 +57,16 @@ public class Arborescence {
 					// tous les fichiers que l'on ignore dans le d�compte	
 					if(!list[i].startsWith(".") && !list[i].startsWith("target") && !list[i].endsWith(".otf") && !list[i].endsWith(".eot") && !list[i].endsWith(".svg") && !list[i].endsWith(".ttf") && !list[i].endsWith(".woff")
 							&& !list[i].endsWith(".woff2") && !list[i].endsWith(".gif") && !list[i].endsWith(".png") && !list[i].endsWith(".jpg") && !list[i].endsWith(".jpeg") && !list[i].endsWith(".ico") && !list[i].endsWith(".log")){
-						
-					if (L.containsKey(list[i].substring(list[i].lastIndexOf(".")))){
+				    if(!list[i].contains(".")){
+							try {
+								sansextension=sansextension+StringCompteur(repertoire+"/"+list[i]);
+							} catch (IOException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+							L.put(sansex,sansextension);
+						}
+					else if (L.containsKey(list[i].substring(list[i].lastIndexOf(".")))){
 							int h = (int) L.get(list[i].substring(list[i].lastIndexOf(".")));
 							try {
 								h=h+StringCompteur(repertoire+"/"+list[i]);
@@ -77,6 +85,7 @@ public class Arborescence {
 								
 						
 					}
+					
 					else{
 						try {
 							L.put(list[i].substring(list[i].lastIndexOf(".")),StringCompteur(repertoire+"/"+list[i]));
@@ -89,6 +98,7 @@ public class Arborescence {
 						}
 						
 					}
+					
 					
 						
 						
@@ -111,11 +121,14 @@ public class Arborescence {
 	public static void main (String[] args){
 		HashMap lesfichiers = new HashMap();
 		int valeurtotal=0;
+		int sansextension=0;
+		String sansex="sansex";
 		String total= "total";
 		lesfichiers.put("total", valeurtotal);
+		lesfichiers.put("sansex", sansextension);
 		float [] taille= new float [40];
 		StringBuffer fichiers = new StringBuffer();
-		System.out.println(recurseDirs(valeurtotal, total,"D:/Users/beghinb/lutece-dev4", fichiers, lesfichiers));
+		System.out.println(recurseDirs(valeurtotal, sansextension,sansex, total,"D:/Users/beghinb/lutece-dev4", fichiers, lesfichiers));
 		
 	}
 
