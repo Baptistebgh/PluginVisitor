@@ -130,7 +130,7 @@ public class Arborescence {
 		StringBuffer fichiers = new StringBuffer();
 		recurseDirs("D:/Users/beghinb/lutece-dev4", fichiers, lesfichiers);
 		lesfichiers.put("total",total);
-		lesfichiers.put("sansex", sansextension);
+		lesfichiers.put("sans_extension", sansextension);
 		System.out.println(sortByValue(lesfichiers));
 		
 	}
