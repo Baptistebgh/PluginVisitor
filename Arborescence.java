@@ -8,6 +8,9 @@ import java.util.HashMap;
 import java.util.Hashtable;
 
 public class Arborescence {
+	
+	static int total = 0;
+	static int sansextension = 0;
 
 	//Prend en param�tre le chemin
 	public static int StringCompteur(String docPath) throws IOException{
@@ -26,7 +29,7 @@ public class Arborescence {
 			return(count);
 		}
 	
-	public static HashMap  recurseDirs(int c,int sansextension,String sansex, String total, String repertoire, StringBuffer b, HashMap L){
+	public static HashMap  recurseDirs(String repertoire, StringBuffer b, HashMap L){
 		File fichier = new File(repertoire);
 		String list[] ={};
 		StringBuffer a = new StringBuffer();
@@ -43,10 +46,9 @@ public class Arborescence {
 					
 				File var= new File(repertoire+ File.separatorChar + list[i]);
 				if(var.isDirectory() && !list[i].startsWith(".") && !list[i].startsWith("target")){
+							
 					
-					
-					
-					recurseDirs(c,sansextension, sansex, total,repertoire+"/" +list[i], b, L);
+					recurseDirs(repertoire+"/" +list[i], b, L);
 					
 				}
 				else{
@@ -57,36 +59,34 @@ public class Arborescence {
 				    if(!list[i].contains(".")){
 							try {
 								sansextension=sansextension+StringCompteur(repertoire+"/"+list[i]);
-								L.put(sansex,sansextension);
-								c=c+StringCompteur(repertoire+"/"+list[i]);
+								total=total+StringCompteur(repertoire+"/"+list[i]);
 							} catch (IOException e) {
 								// TODO Auto-generated catch block
 								e.printStackTrace();
 							}
-							L.put(total,c);
+							System.out.println(total);
 						}
 					else if (L.containsKey(list[i].substring(list[i].lastIndexOf(".")))){
 							int h = (int) L.get(list[i].substring(list[i].lastIndexOf(".")));
 							try {
 								h=h+StringCompteur(repertoire+"/"+list[i]);
 								L.put(list[i].substring(list[i].lastIndexOf(".")),h);
-								c=c+StringCompteur(repertoire+"/"+list[i]);
+								total=total+StringCompteur(repertoire+"/"+list[i]);
+								// System.out.println(list[i]);
 								
 							} catch (IOException e) {
 								// TODO Auto-generated catch block
 								e.printStackTrace();
 							}
-		
-							L.put(total,c);
-								
-						
+							
+							System.out.println(total);	
 					}
 					
 					else{
 						try {
 							L.put(list[i].substring(list[i].lastIndexOf(".")),StringCompteur(repertoire+"/"+list[i]));
-							c=c+StringCompteur(repertoire+"/"+list[i]);
-							L.put(total,c);
+							total=total+StringCompteur(repertoire+"/"+list[i]);
+							System.out.println(total);
 							
 						} catch (IOException e) {
 							// TODO Auto-generated catch block
@@ -109,15 +109,13 @@ public class Arborescence {
 
 	public static void main (String[] args){
 		HashMap lesfichiers = new HashMap();
-		int valeurtotal=0;
-		int sansextension=0;
-		String sansex="sansex";
-		String total= "total";
-		lesfichiers.put("total", valeurtotal);
-		lesfichiers.put("sansex", sansextension);
+
+		
 		float [] taille= new float [40];
 		StringBuffer fichiers = new StringBuffer();
-		System.out.println(recurseDirs(valeurtotal, sansextension,sansex, total,"D:/Users/beghinb/lutece-dev4", fichiers, lesfichiers));
+		recurseDirs("D:/Users/beghinb/lutece-dev4", fichiers, lesfichiers);
+		lesfichiers.put("total",total);
+		lesfichiers.put("sansex", sansextension);
+		System.out.println(lesfichiers);
 	}
-
 }
