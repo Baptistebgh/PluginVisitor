@@ -17,20 +17,29 @@ public class Arborescence {
 	public static int StringCompteur(String docPath) throws IOException{
 		
 		int count = 0;
+		int d = 0;
 		
 		FileInputStream fis = new FileInputStream(docPath);
 
 		LineNumberReader l = new LineNumberReader(new BufferedReader(new InputStreamReader(fis)));
 		
+		
+		
+		
 		while ((l.readLine())!=null) 
 			{
+			if (l.readLine().startsWith("*") || l.readLine().startsWith("/*") || l.readLine().startsWith("*/") || l.readLine().startsWith("//") || l.readLine().isEmpty()){
+				d+=1;
+				System.out.println(d);
+			}
 				count = l.getLineNumber();
 			}
+		
 			
 			return(count);
 		}
 	
-	public static HashMap  recurseDirs(String repertoire, StringBuffer b, HashMap L){
+	public static HashMap  recurseDirs(String repertoire, HashMap L){
 		File fichier = new File(repertoire);
 		String list[] ={};
 		StringBuffer a = new StringBuffer();
@@ -47,7 +56,7 @@ public class Arborescence {
 				if(var.isDirectory() && !list[i].startsWith(".") && !list[i].startsWith("target")){
 							
 					
-					recurseDirs(repertoire+"/" +list[i], b, L);
+					recurseDirs(repertoire+"/" +list[i], L);
 					
 				}
 				else{
@@ -127,8 +136,7 @@ public class Arborescence {
 		HashMap lesfichiers = new HashMap();
 
 		float [] taille= new float [40];
-		StringBuffer fichiers = new StringBuffer();
-		recurseDirs("D:/Users/beghinb/lutece-dev4", fichiers, lesfichiers);
+		recurseDirs("D:/Users/beghinb/lutece-dev4", lesfichiers);
 		lesfichiers.put("total",total);
 		lesfichiers.put("sans_extension", sansextension);
 		System.out.println(sortByValue(lesfichiers));
