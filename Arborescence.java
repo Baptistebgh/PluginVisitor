@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.io.LineNumberReader;
 import java.util.HashMap;
 import java.util.Hashtable;
+import java.util.*;
 
 public class Arborescence {
 	
@@ -41,9 +42,7 @@ public class Arborescence {
 			list = fichier.list();
 		
 			for (int i = 0; i < list.length ; i++)
-			{
-				System.out.println(L.get(total));
-					
+			{					
 				File var= new File(repertoire+ File.separatorChar + list[i]);
 				if(var.isDirectory() && !list[i].startsWith(".") && !list[i].startsWith("target")){
 							
@@ -64,7 +63,6 @@ public class Arborescence {
 								// TODO Auto-generated catch block
 								e.printStackTrace();
 							}
-							System.out.println(total);
 						}
 					else if (L.containsKey(list[i].substring(list[i].lastIndexOf(".")))){
 							int h = (int) L.get(list[i].substring(list[i].lastIndexOf(".")));
@@ -78,16 +76,12 @@ public class Arborescence {
 								// TODO Auto-generated catch block
 								e.printStackTrace();
 							}
-							
-							System.out.println(total);	
 					}
 					
 					else{
 						try {
 							L.put(list[i].substring(list[i].lastIndexOf(".")),StringCompteur(repertoire+"/"+list[i]));
 							total=total+StringCompteur(repertoire+"/"+list[i]);
-							System.out.println(total);
-							
 						} catch (IOException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
@@ -105,17 +99,39 @@ public class Arborescence {
 		
 		return L;
 				
-	}
+	} 
+	
+	 public static <K, V extends Comparable<? super V>> Map<K, V> 
+     sortByValue( Map<K, V> map )
+ {
+     List<Map.Entry<K, V>> list =
+         new LinkedList<Map.Entry<K, V>>( map.entrySet() );
+     Collections.sort( list, new Comparator<Map.Entry<K, V>>()
+     {
+         public int compare( Map.Entry<K, V> o1, Map.Entry<K, V> o2 )
+         {
+             return (o2.getValue()).compareTo( o1.getValue() );
+         }
+     } );
+
+     Map<K, V> result = new LinkedHashMap<K, V>();
+     for (Map.Entry<K, V> entry : list)
+     {
+         result.put( entry.getKey(), entry.getValue() );
+     }
+     return result;
+ }
 
 	public static void main (String[] args){
+		
 		HashMap lesfichiers = new HashMap();
 
-		
 		float [] taille= new float [40];
 		StringBuffer fichiers = new StringBuffer();
 		recurseDirs("D:/Users/beghinb/lutece-dev4", fichiers, lesfichiers);
 		lesfichiers.put("total",total);
 		lesfichiers.put("sansex", sansextension);
-		System.out.println(lesfichiers);
+		System.out.println(sortByValue(lesfichiers));
+		
 	}
 }
