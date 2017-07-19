@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.LineNumberReader;
 import java.util.HashMap;
-import java.util.Hashtable;
 import java.util.*;
 
 public class Arborescence {
@@ -23,21 +22,43 @@ public class Arborescence {
 
 		LineNumberReader l = new LineNumberReader(new BufferedReader(new InputStreamReader(fis)));
 		
-		
-		
-		
+	
 		while ((l.readLine())!=null) 
 			{
-			if (l.readLine().startsWith("*") || l.readLine().startsWith("/*") || l.readLine().startsWith("*/") || l.readLine().startsWith("//") || l.readLine().isEmpty()){
-				d+=1;
-				System.out.println(d);
-			}
+
 				count = l.getLineNumber();
 			}
 		
 			
 			return(count);
 		}
+	
+	
+	/*
+	 * private static int getLines(String docPath) throws IOException { 
+		File fichier = new File(docPath);
+		FileReader fr=new FileReader(fichier);
+		BufferedReader br=new BufferedReader(fr); 
+		int i=0;
+		boolean isEOF=false;
+		do{
+		String t=br.readLine();
+		if(t!=null){
+		isEOF=true;
+		t=t.replaceAll("\\n|\\t|\\s", "");
+		if((!t.equals("")) && (!t.startsWith("//"))) {
+		i = i + 1;
+		}
+		}
+		else {
+		isEOF=false;
+		}
+		}while(isEOF);
+		br.close();
+		fr.close();
+		return i;
+		}
+	*/
 	
 	public static HashMap  recurseDirs(String repertoire, HashMap L){
 		File fichier = new File(repertoire);
@@ -79,8 +100,7 @@ public class Arborescence {
 								h=h+StringCompteur(repertoire+"/"+list[i]);
 								L.put(list[i].substring(list[i].lastIndexOf(".")),h);
 								total=total+StringCompteur(repertoire+"/"+list[i]);
-								// System.out.println(list[i]);
-								
+										
 							} catch (IOException e) {
 								// TODO Auto-generated catch block
 								e.printStackTrace();
@@ -110,18 +130,16 @@ public class Arborescence {
 				
 	} 
 	
-	 public static <K, V extends Comparable<? super V>> Map<K, V> 
-     sortByValue( Map<K, V> map )
- {
-     List<Map.Entry<K, V>> list =
-         new LinkedList<Map.Entry<K, V>>( map.entrySet() );
-     Collections.sort( list, new Comparator<Map.Entry<K, V>>()
-     {
+	 public static <K, V extends Comparable<? super V>> Map<K, V> sortByValue( Map<K, V> map )
+	 {
+     List<Map.Entry<K, V>> list = new LinkedList<Map.Entry<K, V>>( map.entrySet() );
+     Collections.sort( list, new Comparator<Map.Entry<K, V>>(){
          public int compare( Map.Entry<K, V> o1, Map.Entry<K, V> o2 )
          {
              return (o2.getValue()).compareTo( o1.getValue() );
          }
-     } );
+     } 
+     );
 
      Map<K, V> result = new LinkedHashMap<K, V>();
      for (Map.Entry<K, V> entry : list)
@@ -139,7 +157,6 @@ public class Arborescence {
 		recurseDirs("D:/Users/beghinb/lutece-dev4", lesfichiers);
 		lesfichiers.put("total",total);
 		lesfichiers.put("sans_extension", sansextension);
-		System.out.println(sortByValue(lesfichiers));
-		
+		System.out.println(sortByValue(lesfichiers));		
 	}
 }
