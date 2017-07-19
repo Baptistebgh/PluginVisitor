@@ -34,6 +34,7 @@ public class Arborescence {
 		}
 	
 	
+	
 	/*
 	 * private static int getLines(String docPath) throws IOException { 
 		File fichier = new File(docPath);
@@ -154,7 +155,7 @@ public class Arborescence {
 		HashMap lesfichiers = new HashMap();
 
 		float [] taille= new float [40];
-		recurseDirs("D:/Users/beghinb/lutece-dev4", lesfichiers);
+		recurseDirs("D:/Users/beghinb/.atom", lesfichiers);
 		lesfichiers.put("total",total);
 		lesfichiers.put("sans_extension", sansextension);
 		System.out.println(sortByValue(lesfichiers));		
