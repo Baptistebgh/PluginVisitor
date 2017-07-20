@@ -7,9 +7,11 @@ public class Main {
 		VisitorCompteur visitCount = new VisitorCompteur();
 		VisitorSize visitSize= new VisitorSize();
 		FilesStructure.accept(visitSize, "/home/oscar/Documents/lutece-dev2/lutece-dev-example");
-		//FilesStructure.accept(visitCount, "D:/Users/beghinb/lutece-dev4");
+		FilesStructure.accept(visitCount, "/home/oscar/Documents/lutece-dev2/lutece-dev-example");
 		HashMap L = visitSize.getsizeL();
+		HashMap G = visitCount.getL();
 		System.out.println(L);
+		System.out.println(G);
 	}
 
 }
