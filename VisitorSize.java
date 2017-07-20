@@ -4,6 +4,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.LineNumberReader;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -11,6 +12,7 @@ import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class VisitorSize implements Visitor{
 	
@@ -33,6 +35,12 @@ public class VisitorSize implements Visitor{
     for (Map.Entry<K, V> entry : list)
     {
         result.put( entry.getKey(), entry.getValue() );
+    }
+    Set<String> M= result.keySet();
+    String[] S = M.toArray(new String[M.size()]);
+    for(int k =0; k<S.length;k++){
+    	float h = (float)result.get(S[k]);
+    	result.put(S[k], h/1024+"ko");
     }
     return result;
 }
@@ -74,6 +82,7 @@ public class VisitorSize implements Visitor{
 	}
 
 	public HashMap getsizeL() {
+		
 
 	return sortByValue(L);
 	}
