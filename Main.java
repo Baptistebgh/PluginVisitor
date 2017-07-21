@@ -15,7 +15,7 @@ public class Main {
 		int T = visitStatic.getstatic();
 		System.out.println(L);
 		System.out.println(G);
-		System.out.println(T+" nombre de méthodes static");
+		System.out.println(" Il y a "+T+" méthodes static dans ce dossier");
 	}
 
 }
