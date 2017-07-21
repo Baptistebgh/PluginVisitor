@@ -8,10 +8,10 @@ public class Main {
 		VisitorFiles visitFiles = new VisitorFiles();
 		VisitorSize visitSize= new VisitorSize();
 		VisitorStatic visitStatic= new VisitorStatic();
-		FilesStructure.accept(visitSize, "/home/oscar/plugin-visitor/PluginVisitor/PluginVisitor");
-		FilesStructure.accept(visitCount, "/home/oscar/plugin-visitor/PluginVisitor/PluginVisitor");
-		FilesStructure.accept(visitStatic, "/home/oscar/plugin-visitor/PluginVisitor/PluginVisitor");
-		FilesStructure.accept(visitFiles, "/home/oscar/plugin-visitor/PluginVisitor/PluginVisitor");
+		FilesStructure.accept(visitSize, "/home/oscar/Documents/lutece-dev2");
+		FilesStructure.accept(visitCount, "/home/oscar/Documents/lutece-dev2");
+		FilesStructure.accept(visitStatic, "/home/oscar/Documents/lutece-dev2");
+		FilesStructure.accept(visitFiles, "/home/oscar/Documents/lutece-dev2");
 		HashMap L = visitSize.getsizeL();
 		HashMap F = visitFiles.getfichiers();
 		HashMap G = visitCount.getL();
