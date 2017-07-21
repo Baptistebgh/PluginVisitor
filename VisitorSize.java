@@ -54,8 +54,7 @@ public class VisitorSize implements Visitor{
 		size=fis.length();
 	
 	
-	if(!docPath.startsWith(".") && !docPath.startsWith("target") && !docPath.endsWith(".otf") && !docPath.endsWith(".eot") && !docPath.endsWith(".svg") && !docPath.endsWith(".ttf") && !docPath.endsWith(".woff")
-		&& !docPath.endsWith(".woff2") && !docPath.endsWith(".gif") && !docPath.endsWith(".png") && !docPath.endsWith(".jpg") && !docPath.endsWith(".jpeg") && !docPath.endsWith(".ico") && !docPath.endsWith(".log")){
+	if(testextend(docPath)){
 		if(!docPath.contains(".")){
 			sansextension=sansextension+size;
 			total=total+size;
@@ -86,5 +85,14 @@ public class VisitorSize implements Visitor{
 
 	return sortByValue(L);
 	}
+	
+	public boolean testextend(String docPath){
+		if(!docPath.startsWith(".") && !docPath.startsWith("target") && !docPath.endsWith(".otf") && !docPath.endsWith(".eot") && !docPath.endsWith(".svg") && !docPath.endsWith(".ttf") && !docPath.endsWith(".woff")
+				&& !docPath.endsWith(".woff2") && !docPath.endsWith(".gif") && !docPath.endsWith(".png") && !docPath.endsWith(".jpg") && !docPath.endsWith(".jpeg") && !docPath.endsWith(".ico") && !docPath.endsWith(".log")){
+			return true;
+		}
+		return false;
+	}
+	
 	
 }

@@ -61,8 +61,7 @@ public class VisitorCompteur implements Visitor{
 		}
 
 
-		if(!docPath.startsWith(".") && !docPath.startsWith("target") && !docPath.endsWith(".otf") && !docPath.endsWith(".eot") && !docPath.endsWith(".svg") && !docPath.endsWith(".ttf") && !docPath.endsWith(".woff")
-				&& !docPath.endsWith(".woff2") && !docPath.endsWith(".gif") && !docPath.endsWith(".png") && !docPath.endsWith(".jpg") && !docPath.endsWith(".jpeg") && !docPath.endsWith(".ico") && !docPath.endsWith(".log")){
+		if(testextend(docPath)){
 			if(!docPath.contains(".")){
 				sansextension=sansextension+count;
 				total=total+count;
@@ -91,6 +90,14 @@ public class VisitorCompteur implements Visitor{
 	public HashMap getL() {
 
 		return sortByValue(L);
+	}
+	
+	public boolean testextend(String docPath){
+		if(!docPath.startsWith(".") && !docPath.startsWith("target") && !docPath.endsWith(".otf") && !docPath.endsWith(".eot") && !docPath.endsWith(".svg") && !docPath.endsWith(".ttf") && !docPath.endsWith(".woff")
+				&& !docPath.endsWith(".woff2") && !docPath.endsWith(".gif") && !docPath.endsWith(".png") && !docPath.endsWith(".jpg") && !docPath.endsWith(".jpeg") && !docPath.endsWith(".ico") && !docPath.endsWith(".log")){
+			return true;
+		}
+		return false;
 	}
 
 }
