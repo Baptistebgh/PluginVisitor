@@ -4,7 +4,7 @@ import java.io.IOException;
 
 
 
-public class VisitorStatic implements Visitor{
+public class VisitorClass implements Visitor{
 
 	int total=0;
 	public void visit(String docPath) throws IOException {
@@ -16,7 +16,7 @@ public class VisitorStatic implements Visitor{
 		String line =bufferedReader.readLine() ;
 		while (line != null) {
 			line=line.trim();
-         if(line.startsWith("public static")){
+         if(line.startsWith("public class")){
         	 total=total+1;
          }
 			line = bufferedReader.readLine();
@@ -24,7 +24,7 @@ public class VisitorStatic implements Visitor{
 	}
 	
 
-	public int getstatic() {
+	public int getclass() {
 
 		return total;
 	}
