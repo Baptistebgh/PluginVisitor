@@ -1,4 +1,8 @@
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.HashMap;
+
+import org.omg.CORBA.portable.InputStream;
 
 public class Main {
 
@@ -24,6 +28,7 @@ public class Main {
 		System.out.println(" Il y a "+T+" méthodes static dans ce dossier");
 		System.out.println(F);
 		System.out.println(" Il y a "+C+" class dans ce dossier");
+		
 		
 	}
 
