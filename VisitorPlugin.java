@@ -22,16 +22,13 @@
 	         if(truline.startsWith("<artifactId>plugin")){
 	        	 String nomplugin = truline;
 	        	 totalplugin=totalplugin+1;
-	        	 int v = nomplugin.length();
-	        	 nomplugin.substring(12,v-13);
+	        	
 	        	 list[totalmodule+totalplugin]=nomplugin;
 	         }
 	         else if(truline.startsWith("<artifactId>module")){
 	        	 String nommodule = truline;
 	        	 totalmodule=totalmodule+1 ;
-	        	 int v = nommodule.length();
-	        	int m=v-13;
-	        	 nommodule.substring(12,m);
+	        	 
 	        	 list[totalmodule+totalplugin]=nommodule;
 	         }
 	         
@@ -42,7 +39,9 @@
 		
 
 		public String[] getplugin() {
-			list[0]="il y a "+totalmodule+totalplugin+"modules et plugins";
+			
+			int total= totalmodule+totalplugin;
+			list[0]="il y a "+total+" modules et plugins";
 
 			return list;
 		}

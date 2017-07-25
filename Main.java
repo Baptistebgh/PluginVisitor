@@ -32,7 +32,10 @@ public class Main {
 		int C = visitClass.getclass();
 		String[] M = visitPlugin.getplugin();
 		for (int k=0; k< M.length; k++){
-			if (M[k]!=null){
+			if ((M[k]!=null) && k!=0){
+				System.out.println(M[k].substring(12, M[k].length()-13));
+			}
+			else if ((M[k]!=null) && k==0){
 				System.out.println(M[k]);
 			}
 		}
