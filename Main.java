@@ -18,12 +18,12 @@ public class Main {
 		VisitorClass visitClass= new VisitorClass();
 		VisitorPlugin visitPlugin= new VisitorPlugin();
 		
-		FilesStructure.accept(visitSize, "D:/Users/beghinb/lutece-dev4");
-		FilesStructure.accept(visitCount, "D:/Users/beghinb/lutece-dev4");
-		FilesStructure.accept(visitStatic, "D:/Users/beghinb/lutece-dev4");
-		FilesStructure.accept(visitFiles, "D:/Users/beghinb/lutece-dev4");
-		FilesStructure.accept(visitClass, "D:/Users/beghinb/lutece-dev4");
-		FilesStructure.accept(visitPlugin, "D:/Users/beghinb/lutece-dev4");
+		FilesStructure.accept(visitSize, "/home/oscar/Documents/lutece-dev2");
+		FilesStructure.accept(visitCount, "/home/oscar/Documents/lutece-dev2");
+		FilesStructure.accept(visitStatic, "/home/oscar/Documents/lutece-dev2");
+		FilesStructure.accept(visitFiles, "/home/oscar/Documents/lutece-dev2");
+		FilesStructure.accept(visitClass, "/home/oscar/Documents/lutece-dev2");
+		FilesStructure.accept(visitPlugin, "/home/oscar/Documents/lutece-dev2");
 		
 		HashMap mapSize = visitSize.getsizeL();
 		HashMap mapFile = visitFiles.getfichiers();
@@ -31,16 +31,19 @@ public class Main {
 		int T = visitStatic.getstatic();
 		int C = visitClass.getclass();
 		String[] M = visitPlugin.getplugin();
-		System.out.println(M);
-		
+		for (int k=0; k< M.length; k++){
+			if (M[k]!=null){
+				System.out.println(M[k]);
+			}
+		}
 		
 		
 		//JSON
 
 		// Size in JSON
 		JSONObject jsonSize = new JSONObject();
-		Set<String> M= mapSize.keySet();
-	    String[] stringSize = M.toArray(new String[M.size()]);
+		Set<String> sizeSet= mapSize.keySet();
+	    String[] stringSize = sizeSet.toArray(new String[sizeSet.size()]);
 	    for(int k =0; k < stringSize.length;k++){
 	    	Object A = mapSize.get(stringSize[k]);
 		    jsonSize.put(stringSize[k], A);
@@ -65,7 +68,7 @@ public class Main {
 	    String[] stringFile = fileSet.toArray(new String[fileSet.size()]);
 	    for(int k =0; k < stringFile.length;k++){
 	    	Object A = mapFile.get(stringFile[k]);
-	    	System.out.println(A);
+	    	
 	    	if (A.equals(1)){
 	    		jsonFile.put(stringFile[k], A+" fichier");
 	    	}else{
