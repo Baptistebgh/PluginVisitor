@@ -11,34 +11,36 @@ import java.io.BufferedReader;
 		public void visit(String docPath) throws IOException {
 			
 
-			if (docPath.endsWith(".xml")){
+			if (docPath.endsWith("pom.xml")){
 			FileReader fileReader = new FileReader(docPath);;
 			BufferedReader bufferedReader = new BufferedReader(fileReader);
 			String line =bufferedReader.readLine() ;
 			while (line != null) {
-				line=line.trim();
-	         if(line.startsWith("<artifactId>plugin")){
-	        	 String nomplugin = line;
+				
+				String truline=line.trim();
+	         if(truline.startsWith("<artifactId>plugin")){
+	        	 String nomplugin = truline;
 	        	 totalplugin=totalplugin+1;
-	        	 int v = nomplugin.length();
-	        	 nomplugin.substring(12,v-13);
+	        	
 	        	 list[totalmodule+totalplugin]=nomplugin;
 	         }
-	         else if(line.startsWith("<artifactId>module")){
-	        	 String nommodule = line;
+	         else if(truline.startsWith("<artifactId>module")){
+	        	 String nommodule = truline;
 	        	 totalmodule=totalmodule+1 ;
-	        	 int v = nommodule.length();
-	        	 nommodule.substring(12,v-13);
+	        	 
 	        	 list[totalmodule+totalplugin]=nommodule;
 	         }
-	         }
+	         
 				line = bufferedReader.readLine();
+			}
 			}
 		}
 		
 
 		public String[] getplugin() {
-			list[0]="il y a "+totalmodule+totalplugin+"modules et plugins";
+			
+			int total= totalmodule+totalplugin;
+			list[0]="il y a "+total+" modules et plugins";
 
 			return list;
 		}

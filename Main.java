@@ -19,22 +19,31 @@ public class Main {
 		VisitorClass visitClass= new VisitorClass();
 		VisitorPlugin visitPlugin= new VisitorPlugin();
 		
-		FilesStructure.accept(visitSize, "D:/Users/beghinb/plugin-wizard");
-		FilesStructure.accept(visitCount, "D:/Users/beghinb/plugin-wizard");
-		FilesStructure.accept(visitStatic, "D:/Users/beghinb/plugin-wizard");
-		FilesStructure.accept(visitFiles, "D:/Users/beghinb/plugin-wizard");
-		FilesStructure.accept(visitClass, "D:/Users/beghinb/plugin-wizard");
-		// FilesStructure.accept(visitPlugin, "D:/Users/beghinb/plugin-wizard");
-		
+
+		FilesStructure.accept(visitSize, "D:/Users/beghinb/lutece-dev4");
+		FilesStructure.accept(visitCount, "D:/Users/beghinb/lutece-dev4");
+		FilesStructure.accept(visitStatic, "D:/Users/beghinb/lutece-dev4");
+		FilesStructure.accept(visitFiles, "D:/Users/beghinb/lutece-dev4");
+		FilesStructure.accept(visitClass, "D:/Users/beghinb/lutece-dev4");
+		FilesStructure.accept(visitPlugin, "D:/Users/beghinb/lutece-dev4");
+
+
 		HashMap mapSize = visitSize.getsizeL();
 		HashMap mapFile = visitFiles.getfichiers();
 		HashMap mapCount = visitCount.getL();
 		int T = visitStatic.getstatic();
 		int C = visitClass.getclass();
-		//String[] listPlugin = visitPlugin.getplugin();
-//		System.out.println(listPlugin);
-		
-		
+
+		String[] M = visitPlugin.getplugin();
+		for (int k=0; k< M.length; k++){
+			if ((M[k]!=null) && k!=0){
+				System.out.println(M[k].substring(12, M[k].length()-13));
+			}
+			else if ((M[k]!=null) && k==0){
+				System.out.println(M[k]);
+			}
+		}
+
 		
 		//JSON
 
@@ -66,6 +75,7 @@ public class Main {
 	    String[] stringFile = fileSet.toArray(new String[fileSet.size()]);
 	    for(int k =0; k < stringFile.length;k++){
 	    	Object A = mapFile.get(stringFile[k]);
+
 	    	if (A.equals(1)){
 	    		jsonFile.put(stringFile[k], A+" fichier");
 	    	}else{
