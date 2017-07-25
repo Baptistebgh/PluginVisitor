@@ -1,11 +1,12 @@
+import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.StringWriter;
 import java.util.HashMap;
 import java.util.Set;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
-import org.omg.CORBA.portable.InputStream;
 
 public class Main {
 
@@ -18,20 +19,20 @@ public class Main {
 		VisitorClass visitClass= new VisitorClass();
 		VisitorPlugin visitPlugin= new VisitorPlugin();
 		
-		FilesStructure.accept(visitSize, "D:/Users/beghinb/lutece-dev4");
-		FilesStructure.accept(visitCount, "D:/Users/beghinb/lutece-dev4");
-		FilesStructure.accept(visitStatic, "D:/Users/beghinb/lutece-dev4");
-		FilesStructure.accept(visitFiles, "D:/Users/beghinb/lutece-dev4");
-		FilesStructure.accept(visitClass, "D:/Users/beghinb/lutece-dev4");
-		FilesStructure.accept(visitPlugin, "D:/Users/beghinb/lutece-dev4");
+		FilesStructure.accept(visitSize, "D:/Users/beghinb/plugin-wizard");
+		FilesStructure.accept(visitCount, "D:/Users/beghinb/plugin-wizard");
+		FilesStructure.accept(visitStatic, "D:/Users/beghinb/plugin-wizard");
+		FilesStructure.accept(visitFiles, "D:/Users/beghinb/plugin-wizard");
+		FilesStructure.accept(visitClass, "D:/Users/beghinb/plugin-wizard");
+		// FilesStructure.accept(visitPlugin, "D:/Users/beghinb/plugin-wizard");
 		
 		HashMap mapSize = visitSize.getsizeL();
 		HashMap mapFile = visitFiles.getfichiers();
 		HashMap mapCount = visitCount.getL();
 		int T = visitStatic.getstatic();
 		int C = visitClass.getclass();
-		String[] M = visitPlugin.getplugin();
-		System.out.println(M);
+		//String[] listPlugin = visitPlugin.getplugin();
+//		System.out.println(listPlugin);
 		
 		
 		
@@ -39,8 +40,8 @@ public class Main {
 
 		// Size in JSON
 		JSONObject jsonSize = new JSONObject();
-		Set<String> M= mapSize.keySet();
-	    String[] stringSize = M.toArray(new String[M.size()]);
+		Set<String> sizeSet= mapSize.keySet();
+	    String[] stringSize = sizeSet.toArray(new String[sizeSet.size()]);
 	    for(int k =0; k < stringSize.length;k++){
 	    	Object A = mapSize.get(stringSize[k]);
 		    jsonSize.put(stringSize[k], A);
@@ -65,7 +66,6 @@ public class Main {
 	    String[] stringFile = fileSet.toArray(new String[fileSet.size()]);
 	    for(int k =0; k < stringFile.length;k++){
 	    	Object A = mapFile.get(stringFile[k]);
-	    	System.out.println(A);
 	    	if (A.equals(1)){
 	    		jsonFile.put(stringFile[k], A+" fichier");
 	    	}else{
@@ -77,11 +77,28 @@ public class Main {
 	    
 	  //Number of Static Class and Class in JSON
 	  JSONObject jsonClass = new JSONObject();
-	  jsonClass.put("Nombre de mï¿½thodes Statiques", T);
+	  jsonClass.put("Nombre de méthodes Statiques", T);
 	  jsonClass.put("Nombre de classes", C);
 
 	  System.out.printf( "\n\nJSON Classes: %s", jsonClass.toString(2) );
 
+	  
+	  try (FileWriter file = new FileWriter("D:/Users/beghinb/PluginVisitor/FichiersJson/Size.json")) {
+			try {
+				file.write("Size of files : \n ");
+				file.write(jsonSize.toString());
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+	  
+	 // StringWriter out = new StringWriter();
+      // jsonClass.writeJSONString(out);
+	  
 	}
 
 }
