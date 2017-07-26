@@ -17,7 +17,7 @@ public class Main {
 		VisitorSize visitSize= new VisitorSize();
 		VisitorStatic visitStatic= new VisitorStatic();
 		VisitorClass visitClass= new VisitorClass();
-		//VisitorPlugin visitPlugin= new VisitorPlugin();
+		VisitorPlugin visitPlugin= new VisitorPlugin();
 		
 
 		FilesStructure.accept(visitSize, "D:/Users/beghinb/lutece-dev4");
@@ -25,7 +25,7 @@ public class Main {
 		FilesStructure.accept(visitStatic, "D:/Users/beghinb/lutece-dev4");
 		FilesStructure.accept(visitFiles, "D:/Users/beghinb/lutece-dev4");
 		FilesStructure.accept(visitClass, "D:/Users/beghinb/lutece-dev4");
-		//FilesStructure.accept(visitPlugin, "D:/Users/beghinb/lutece-dev4/lutece-dev-example");
+		FilesStructure.accept(visitPlugin, "D:/Users/beghinb/lutece-dev4/lutece-dev-example");
 
 
 		HashMap mapSize = visitSize.getsizeL();
@@ -34,7 +34,7 @@ public class Main {
 		int T = visitStatic.getstatic();
 		int C = visitClass.getclass();
 
-		/* String[] M = visitPlugin.getplugin();
+		String[] M = visitPlugin.getplugin();
 		for (int k=0; k< M.length; k++){
 			if ((M[k]!=null) && k!=0){
 				System.out.println(M[k].substring(12, M[k].length()-13));
@@ -42,7 +42,7 @@ public class Main {
 			else if ((M[k]!=null) && k==0){
 				System.out.println(M[k]);
 			}
-		} */
+		} 
 
 		
 		//JSON
