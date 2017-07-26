@@ -8,6 +8,7 @@
 	public class VisitorPlugin implements Visitor{
         int totalplugin=0;
 		int totalmodule=0;
+		int depedencies=0;
 		String[] list= new String[20];
 		public void visit(String docPath) throws IOException {
 			
@@ -19,13 +20,17 @@
 			while (line != null) {
 				
 				String truline=line.trim();
-	         if(truline.startsWith("<artifactId>plugin")){
+				depedencies=depedencies+1;
+				if(truline.startsWith("<depedencie>")){
+				 depedencies=0;
+				}
+	         if(truline.startsWith("<artifactId>plugin") && depedencies!=2) {
 	        	 String nomplugin = truline;
 	        	 totalplugin=totalplugin+1;
 	        	
 	        	 list[totalmodule+totalplugin]=nomplugin;
 	         }
-	         else if(truline.startsWith("<artifactId>module")){
+	         else if(truline.startsWith("<artifactId>module")&& depedencies!=2){
 	        	 String nommodule = truline;
 	        	 totalmodule=totalmodule+1 ;
 	        	 
