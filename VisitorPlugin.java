@@ -8,7 +8,7 @@ import java.io.BufferedReader;
         int totalplugin=0;
 		int totalmodule=0;
 		int depedencies=0;
-		String[] list= new String[20];
+		String[] list= new String[2000];
 		public void visit(String docPath) throws IOException {
 			
 
