@@ -123,7 +123,7 @@ public class Main {
 	         SAXParserFactory factory = SAXParserFactory.newInstance();
 	         SAXParser parser = factory.newSAXParser();
 	         
-	         parser.parse("test.xml", new MyXMLHandler());
+	         parser.parse("example.xml", new MyXMLHandler());
 
 	      } catch (DOMException e) {
 	         e.printStackTrace();
