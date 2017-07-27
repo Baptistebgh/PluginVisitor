@@ -4,6 +4,13 @@ import java.io.StringWriter;
 import java.util.HashMap;
 import java.util.Set;
 
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
+import javax.xml.transform.TransformerFactoryConfigurationError;
+import org.w3c.dom.DOMException;
+import org.xml.sax.SAXException;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -12,6 +19,11 @@ public class Main {
 
 	public static void main(String[] args) {
 		
+		/*
+		 * String XML_PATH="/webapp/WEB-INF/plugins/";
+		 * 
+		 
+		//Visitors
 		VisitorCompteur visitCount = new VisitorCompteur();
 		VisitorFiles visitFiles = new VisitorFiles();
 		VisitorSize visitSize= new VisitorSize();
@@ -19,7 +31,7 @@ public class Main {
 		VisitorClass visitClass= new VisitorClass();
 		VisitorPlugin visitPlugin= new VisitorPlugin();
 		
-
+		//Accept Method
 		FilesStructure.accept(visitSize, "D:/Users/beghinb/lutece-dev4");
 		FilesStructure.accept(visitCount, "D:/Users/beghinb/lutece-dev4");
 		FilesStructure.accept(visitStatic, "D:/Users/beghinb/lutece-dev4");
@@ -27,7 +39,7 @@ public class Main {
 		FilesStructure.accept(visitClass, "D:/Users/beghinb/lutece-dev4");
 		FilesStructure.accept(visitPlugin, "D:/Users/beghinb/lutece-dev4/lutece-dev-example");
 
-
+		//Creation of the HashMaps
 		HashMap mapSize = visitSize.getsizeL();
 		HashMap mapFile = visitFiles.getfichiers();
 		HashMap mapCount = visitCount.getL();
@@ -107,6 +119,25 @@ public class Main {
 				e1.printStackTrace();
 			} */
 	
+		try {
+	         SAXParserFactory factory = SAXParserFactory.newInstance();
+	         SAXParser parser = factory.newSAXParser();
+	         
+	         parser.parse("test.xml", new MyXMLHandler());
+
+	      } catch (DOMException e) {
+	         e.printStackTrace();
+	      } catch (ParserConfigurationException e) {
+	         e.printStackTrace();
+	      } catch (TransformerFactoryConfigurationError e) {
+	         e.printStackTrace();
+	      } catch (SAXException e) {
+	         e.printStackTrace();
+	      } catch (IOException e) {
+	         // TODO Auto-generated catch block
+	         e.printStackTrace();
+	      }
+		
 	
 	}
 
