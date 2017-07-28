@@ -9,6 +9,7 @@ import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 import javax.xml.transform.TransformerFactoryConfigurationError;
 
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.w3c.dom.DOMException;
@@ -21,15 +22,19 @@ public class Main {
 
 	public static void main(String[] args) {
 		
+
 		String chemin="/home/oscar/Documents/lutece-dev2/lutece-dev-example";
 		
+
+
 		VisitorCompteur visitCount = new VisitorCompteur();
 		VisitorFiles visitFiles = new VisitorFiles();
 		VisitorSize visitSize= new VisitorSize();
 		VisitorStatic visitStatic= new VisitorStatic();
 		VisitorClass visitClass= new VisitorClass();
-		//VisitorPlugin visitPlugin= new VisitorPlugin();
+		VisitorPlugin visitPlugin= new VisitorPlugin();
 		
+
 
 		FilesStructure.accept(visitSize, chemin);
 		FilesStructure.accept(visitCount, chemin);
@@ -39,13 +44,14 @@ public class Main {
 		//FilesStructure.accept(visitPlugin, "D:/Users/beghinb/lutece-dev4/lutece-dev-example");
 
 
+		//Creation of the HashMaps
 		HashMap mapSize = visitSize.getsizeL();
 		HashMap mapFile = visitFiles.getfichiers();
 		HashMap mapCount = visitCount.getL();
 		int T = visitStatic.getstatic();
 		int C = visitClass.getclass();
 
-		/* String[] M = visitPlugin.getplugin();
+		String[] M = visitPlugin.getplugin();
 		for (int k=0; k< M.length; k++){
 			if ((M[k]!=null) && k!=0){
 				System.out.println(M[k].substring(12, M[k].length()-13));
@@ -53,7 +59,7 @@ public class Main {
 			else if ((M[k]!=null) && k==0){
 				System.out.println(M[k]);
 			}
-		} */
+		} 
 
 		
 		//JSON
@@ -117,6 +123,7 @@ public class Main {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			} */
+
 	  try {
 
     	  SAXParserFactory factory = SAXParserFactory.newInstance();
@@ -154,7 +161,7 @@ public class Main {
          e.printStackTrace();
 
       }
-	
+
 	}
 
 }

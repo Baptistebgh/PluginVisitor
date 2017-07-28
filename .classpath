@@ -2,6 +2,11 @@
 <classpath>
 	<classpathentry kind="src" path=""/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+<<<<<<< HEAD
 	<classpathentry kind="lib" path="/home/oscar/Téléchargements/json-20140107.jar"/>
+=======
+	<classpathentry kind="lib" path="D:/Users/beghinb/Desktop/Downloads/json-20140107.jar"/>
+	<classpathentry kind="lib" path="D:/Users/beghinb/Desktop/Environnement/jaxp-api-1.4.5.jar"/>
+>>>>>>> 7ddc925c5643202cb68b7f6ec2b3ca64f750a710
 	<classpathentry kind="output" path="bin"/>
 </classpath>
