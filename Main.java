@@ -40,7 +40,7 @@ public class Main {
 		FilesStructure.accept(visitStatic, ".");
 		FilesStructure.accept(visitFiles, ".");
 		FilesStructure.accept(visitClass, ".");
-		//FilesStructure.accept(visitPlugin, ".");
+		FilesStructure.accept(visitPlugin, ".");
 
 
 
@@ -51,12 +51,11 @@ public class Main {
 		int T = visitStatic.getstatic();
 		int C = visitClass.getclass();
 
-		String M = visitPlugin.getplugin();
-		M=M.substring(15, M.length()-16)+".xml";
-				System.out.println(M);
-			
-			
+		String[] M = visitPlugin.getplugin();
 		
+				System.out.println(M[0].substring(19, M[0].length()-13));
+			
+		 
 
 		
 		//JSON
@@ -129,7 +128,7 @@ public class Main {
          
          VisitorSax xmlH = new VisitorSax();
                   
-         parser.parse("/webapp/WEB-INF/plugins/example.xml", xmlH);
+         parser.parse("/webapp/WEB-INF/plugins/"+M, xmlH);
          //parser.parse("example.xml", xmlH);
          
          System.out.println("Nombre de Xpages : "+xmlH.compteur);
