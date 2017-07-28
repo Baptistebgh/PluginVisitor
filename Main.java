@@ -101,7 +101,7 @@ public class Main {
 	  jsonClass.put("Nombre de m�thodes Statiques", T);
 	  jsonClass.put("Nombre de classes", C);
 
-	  System.out.printf( "\n\nJSON Classes: %s", jsonClass.toString(2) );
+	  System.out.printf( "\n\nJSON Classes: %s\n", jsonClass.toString(2) );
 
 	  
 	  //Create a JSON file
