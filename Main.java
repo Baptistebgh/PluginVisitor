@@ -51,15 +51,12 @@ public class Main {
 		int T = visitStatic.getstatic();
 		int C = visitClass.getclass();
 
-		String[] M = visitPlugin.getplugin();
-		for (int k=0; k< M.length; k++){
-			if ((M[k]!=null) && k!=0){
-				System.out.println(M[k].substring(12, M[k].length()-13));
+		String M = visitPlugin.getplugin();
+		
+				System.out.println(M.substring(15, M.length()-16));
+			
 			}
-			else if ((M[k]!=null) && k==0){
-				System.out.println(M[k]);
-			}
-		} 
+		
 
 		
 		//JSON
@@ -104,7 +101,7 @@ public class Main {
 	    
 	  //Number of Static Class and Class in JSON
 	  JSONObject jsonClass = new JSONObject();
-	  jsonClass.put("Nombre de méthodes Statiques", T);
+	  jsonClass.put("Nombre de mï¿½thodes Statiques", T);
 	  jsonClass.put("Nombre de classes", C);
 
 	  System.out.printf( "\n\nJSON Classes: %s\n", jsonClass.toString(2) );
