@@ -26,7 +26,6 @@ public class Main {
 		String chemin="/home/oscar/Documents/lutece-dev2/lutece-dev-example";
 		
 
-
 		VisitorCompteur visitCount = new VisitorCompteur();
 		VisitorFiles visitFiles = new VisitorFiles();
 		VisitorSize visitSize= new VisitorSize();
@@ -42,6 +41,7 @@ public class Main {
 		FilesStructure.accept(visitFiles, chemin);
 		FilesStructure.accept(visitClass, chemin);
 		//FilesStructure.accept(visitPlugin, "D:/Users/beghinb/lutece-dev4/lutece-dev-example");
+
 
 
 		//Creation of the HashMaps
@@ -162,6 +162,7 @@ public class Main {
 
       }
 
+	
 	}
 
 }
