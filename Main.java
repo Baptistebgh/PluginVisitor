@@ -52,10 +52,10 @@ public class Main {
 		int C = visitClass.getclass();
 
 		String M = visitPlugin.getplugin();
-		
-				System.out.println(M.substring(15, M.length()-16));
+		M=M.substring(15, M.length()-16)+".xml";
+				System.out.println(M);
 			
-			}
+			
 		
 
 		
