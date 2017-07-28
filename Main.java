@@ -4,13 +4,24 @@ import java.io.StringWriter;
 import java.util.HashMap;
 import java.util.Set;
 
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
+import javax.xml.transform.TransformerFactoryConfigurationError;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.w3c.dom.DOMException;
+import org.xml.sax.SAXException;
+
+
 
 
 public class Main {
 
 	public static void main(String[] args) {
+		
+		String chemin="/home/oscar/Documents/lutece-dev2/lutece-dev-example";
 		
 		VisitorCompteur visitCount = new VisitorCompteur();
 		VisitorFiles visitFiles = new VisitorFiles();
@@ -20,11 +31,11 @@ public class Main {
 		//VisitorPlugin visitPlugin= new VisitorPlugin();
 		
 
-		FilesStructure.accept(visitSize, "D:/Users/beghinb/lutece-dev4");
-		FilesStructure.accept(visitCount, "D:/Users/beghinb/lutece-dev4");
-		FilesStructure.accept(visitStatic, "D:/Users/beghinb/lutece-dev4");
-		FilesStructure.accept(visitFiles, "D:/Users/beghinb/lutece-dev4");
-		FilesStructure.accept(visitClass, "D:/Users/beghinb/lutece-dev4");
+		FilesStructure.accept(visitSize, chemin);
+		FilesStructure.accept(visitCount, chemin);
+		FilesStructure.accept(visitStatic, chemin);
+		FilesStructure.accept(visitFiles, chemin);
+		FilesStructure.accept(visitClass, chemin);
 		//FilesStructure.accept(visitPlugin, "D:/Users/beghinb/lutece-dev4/lutece-dev-example");
 
 
@@ -87,7 +98,7 @@ public class Main {
 	    
 	  //Number of Static Class and Class in JSON
 	  JSONObject jsonClass = new JSONObject();
-	  jsonClass.put("Nombre de méthodes Statiques", T);
+	  jsonClass.put("Nombre de mï¿½thodes Statiques", T);
 	  jsonClass.put("Nombre de classes", C);
 
 	  System.out.printf( "\n\nJSON Classes: %s", jsonClass.toString(2) );
@@ -106,7 +117,43 @@ public class Main {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			} */
-	
+	  try {
+
+    	  SAXParserFactory factory = SAXParserFactory.newInstance();
+
+         SAXParser parser = factory.newSAXParser();
+         
+         VisitorSax xmlH = new VisitorSax();
+         
+
+         parser.parse(chemin +"/webapp/WEB-INF/plugins/example.xml", xmlH);
+         
+         System.out.println("Nombre de Xpages : "+xmlH.compteur);
+
+
+      } catch (DOMException e) {
+
+         e.printStackTrace();
+
+      } catch (ParserConfigurationException e) {
+
+         e.printStackTrace();
+
+      } catch (TransformerFactoryConfigurationError e) {
+
+         e.printStackTrace();
+
+      } catch (SAXException e) {
+
+         e.printStackTrace();
+
+      } catch (IOException e) {
+
+         // TODO Auto-generated catch block
+
+         e.printStackTrace();
+
+      }
 	
 	}
 

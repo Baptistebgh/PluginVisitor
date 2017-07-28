@@ -20,7 +20,7 @@ import java.io.BufferedReader;
 				
 				String truline=line.trim();
 				depedencies=depedencies+1;
-				if(truline.startsWith("<depedencie>")){
+				if(truline.startsWith("<depedency>")){
 				 depedencies=0;
 				}
 	         if(truline.startsWith("<artifactId>plugin") && depedencies!=2) {
