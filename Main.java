@@ -23,7 +23,7 @@ public class Main {
 	public static void main(String[] args) {
 		
 
-		String chemin="/home/oscar/Documents/lutece-dev2/lutece-dev-example";
+		//String chemin="/home/oscar/Documents/lutece-dev2/lutece-dev-example";
 		
 
 		VisitorCompteur visitCount = new VisitorCompteur();
@@ -34,13 +34,13 @@ public class Main {
 		VisitorPlugin visitPlugin= new VisitorPlugin();
 		
 
-
-		FilesStructure.accept(visitSize, chemin);
-		FilesStructure.accept(visitCount, chemin);
-		FilesStructure.accept(visitStatic, chemin);
-		FilesStructure.accept(visitFiles, chemin);
-		FilesStructure.accept(visitClass, chemin);
-		//FilesStructure.accept(visitPlugin, "D:/Users/beghinb/lutece-dev4/lutece-dev-example");
+											
+		FilesStructure.accept(visitSize, ".");
+		FilesStructure.accept(visitCount, ".");
+		FilesStructure.accept(visitStatic, ".");
+		FilesStructure.accept(visitFiles, ".");
+		FilesStructure.accept(visitClass, ".");
+		//FilesStructure.accept(visitPlugin, ".");
 
 
 
@@ -104,7 +104,7 @@ public class Main {
 	    
 	  //Number of Static Class and Class in JSON
 	  JSONObject jsonClass = new JSONObject();
-	  jsonClass.put("Nombre de mï¿½thodes Statiques", T);
+	  jsonClass.put("Nombre de méthodes Statiques", T);
 	  jsonClass.put("Nombre de classes", C);
 
 	  System.out.printf( "\n\nJSON Classes: %s\n", jsonClass.toString(2) );
@@ -126,14 +126,14 @@ public class Main {
 
 	  try {
 
-    	  SAXParserFactory factory = SAXParserFactory.newInstance();
+    	 SAXParserFactory factory = SAXParserFactory.newInstance();
 
          SAXParser parser = factory.newSAXParser();
          
          VisitorSax xmlH = new VisitorSax();
-         
-
-         parser.parse(chemin +"/webapp/WEB-INF/plugins/example.xml", xmlH);
+                  
+         parser.parse("/webapp/WEB-INF/plugins/example.xml", xmlH);
+         //parser.parse("example.xml", xmlH);
          
          System.out.println("Nombre de Xpages : "+xmlH.compteur);
 
