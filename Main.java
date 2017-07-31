@@ -33,16 +33,22 @@ public class Main {
 		VisitorClass visitClass= new VisitorClass();
 		VisitorPlugin visitPlugin= new VisitorPlugin();
 		
+		
+		String repCourant = new String(new java.io.File("").getAbsolutePath());
+		int v=repCourant.length();
+		repCourant=repCourant.substring(0,v-8);
+		
+		
 
 											
-		FilesStructure.accept(visitSize, ".");
-		FilesStructure.accept(visitCount, ".");
-		FilesStructure.accept(visitStatic, ".");
-		FilesStructure.accept(visitFiles, ".");
-		FilesStructure.accept(visitClass, ".");
-		FilesStructure.accept(visitPlugin, ".");
+		FilesStructure.accept(visitSize, repCourant);
+		FilesStructure.accept(visitCount, repCourant);
+		FilesStructure.accept(visitStatic, repCourant);
+		FilesStructure.accept(visitFiles, repCourant);
+		FilesStructure.accept(visitClass, repCourant);
+		FilesStructure.accept(visitPlugin,repCourant);
 
-
+		
 
 		//Creation of the HashMaps
 		HashMap mapSize = visitSize.getsizeL();
@@ -52,8 +58,8 @@ public class Main {
 		int C = visitClass.getclass();
 
 		String[] M = visitPlugin.getplugin();
-		
-				System.out.println(M[0].substring(19, M[0].length()-13));
+		String G =M[0].substring(19, M[0].length()-13)+".xml";
+				
 			
 		 
 
@@ -128,7 +134,7 @@ public class Main {
          
          VisitorSax xmlH = new VisitorSax();
                   
-         parser.parse("/webapp/WEB-INF/plugins/"+M, xmlH);
+         parser.parse("../webapp/WEB-INF/plugins/"+G, xmlH);
          //parser.parse("example.xml", xmlH);
          
          System.out.println("Nombre de Xpages : "+xmlH.compteur);

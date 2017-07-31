@@ -8,7 +8,8 @@ public class FilesStructure{
 	static int sansextension = 0;
 
 	public static void accept(Visitor visitor,String repertoire) {
-		
+
+
 		File fichier = new File(repertoire);
 		String list[] ={};
 		StringBuffer a = new StringBuffer();
@@ -28,7 +29,7 @@ public class FilesStructure{
 					accept(visitor, repertoire+"/" +list[i]);
 					
 				}
-				else if(!var.isDirectory()){
+				else if(!var.isDirectory() ){
 					
 					try {
 						visitor.visit(repertoire+ File.separatorChar + list[i]);
