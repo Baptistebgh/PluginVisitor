@@ -106,7 +106,7 @@ public class Main {
 	    
 	  //Number of Static Class and Class in JSON
 	  JSONObject jsonClass = new JSONObject();
-	  jsonClass.put("Nombre de m�thodes Statiques", T);
+	  jsonClass.put("Nombre de méthodes Statiques", T);
 	  jsonClass.put("Nombre de classes", C);
 
 	  System.out.printf( "\n\nJSON Classes: %s\n", jsonClass.toString(2) );

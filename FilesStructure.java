@@ -23,7 +23,7 @@ public class FilesStructure{
 			for (int i = 0; i < list.length ; i++)
 			{					
 				File var= new File(repertoire+ File.separatorChar + list[i]);
-				if(var.isDirectory() && !list[i].startsWith(".") && !list[i].startsWith("target")){
+				if(var.isDirectory() && testrepo(list[i])){
 							
 					
 					accept(visitor, repertoire+"/" +list[i]);
@@ -45,5 +45,13 @@ public class FilesStructure{
 				
 			}
 }
+	
+	public static boolean testrepo(String test){
+		if(test.startsWith("Visitor") || test.startsWith("target") || test.startsWith(".")){
+		return false; 
+	}
+	
+		return true;
 
+}
 }
