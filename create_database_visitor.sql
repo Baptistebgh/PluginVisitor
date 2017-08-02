@@ -3,6 +3,6 @@ CREATE TABLE lutece_visitor(
     id_visitor INT NOT NULL auto_increment,
     plugin_name VARCHAR(255),
     metric_name VARCHAR(255),
-    metric_value INT,
+    metric_value FLOAT,
     PRIMARY KEY (id_visitor)
 )

@@ -201,7 +201,7 @@ public class Main {
       Set<String> L= mapSize.keySet();
       String[] S = L.toArray(new String[L.size()]);
       for(int k =0; k<S.length;k++){
-       int h = (int)mapSize.get(S[k]);
+       float h = (float)mapSize.get(S[k]);
 
       resultat = statement.executeQuery( "INSERT INTO lutece_visitor ( plugin_name, metric_name, metric_value) VALUES ('"+G+"','"+S[k]+"','"+h+"');" );
       }
@@ -209,7 +209,7 @@ public class Main {
       Set<String> P= mapCount.keySet();
       String[] Q = P.toArray(new String[L.size()]);
       for(int k =0; k<Q.length;k++){
-       int d = Integer.parseInt(mapSize.get(Q[k]).toString());
+       float d = (float)mapCount.get(Q[k]);
 
       resultat = statement.executeQuery( "INSERT INTO lutece_visitor ( plugin_name, metric_name, metric_value) VALUES ('"+G+"','"+Q[k]+"','"+d+"');" );
       }

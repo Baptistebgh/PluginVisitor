@@ -40,7 +40,7 @@ public class VisitorSize implements Visitor{
     String[] S = M.toArray(new String[M.size()]);
     for(int k =0; k<S.length;k++){
     	float h = (float)result.get(S[k]);
-    	result.put(S[k], h/1024+" ko");
+    	result.put(S[k], h);
     }
     return result;
 }

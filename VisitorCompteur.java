@@ -37,8 +37,8 @@ public class VisitorCompteur implements Visitor{
 		Set<String> M= result.keySet();
 		String[] S = M.toArray(new String[M.size()]);
 		for(int k =0; k<S.length;k++){
-			int h = (int)result.get(S[k]);
-			result.put(S[k], h+" lignes");
+			float h = (float)result.get(S[k]);
+			result.put(S[k], h);
 		}
 
 		return result;
