@@ -1,6 +1,11 @@
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.StringWriter;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.HashMap;
 import java.util.Set;
 
@@ -56,6 +61,7 @@ public class Main {
 		HashMap mapCount = visitCount.getL();
 		int T = visitStatic.getstatic();
 		int C = visitClass.getclass();
+		
 
 		String[] M = visitPlugin.getplugin();
 		String G =M[0].substring(19, M[0].length()-13)+".xml";
@@ -163,9 +169,83 @@ public class Main {
          e.printStackTrace();
 
       }
+	  
+	  
+	  
+	  
+	  /* Connexion à la base de données */
+      String url = "jdbc:mysql://localhost/lutece_test2?autoReconnect=true&useUnicode=yes&characterEncoding=utf8";
+      String utilisateur = "root";
+      String motDePasse = "root";
+      Connection connexion = null;
+      Statement statement = null;
+  ResultSet resultat = null;
+      try {
 
+    	    try {
+				Class.forName( "com.mysql.jdbc.Driver" );
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+          connexion = DriverManager.getConnection( url, utilisateur, motDePasse );
+
+          /* Ici, nous placerons nos requêtes vers la BDD */
+          /* ... */
+
+          /* Création de l'objet gérant les requêtes */
+      statement = connexion.createStatement();
+
+
+      /* Exécution d'une requête de lecture */
+      Set<String> L= mapSize.keySet();
+      String[] S = L.toArray(new String[L.size()]);
+      for(int k =0; k<S.length;k++){
+       int h = (int)mapSize.get(S[k]);
+
+      resultat = statement.executeQuery( "INSERT INTO lutece_visitor ( plugin_name, metric_name, metric_value) VALUES ('"+G+"','"+S[k]+"','"+h+"');" );
+      }
+
+      Set<String> P= mapCount.keySet();
+      String[] Q = P.toArray(new String[L.size()]);
+      for(int k =0; k<Q.length;k++){
+       int d = Integer.parseInt(mapSize.get(Q[k]).toString());
+
+      resultat = statement.executeQuery( "INSERT INTO lutece_visitor ( plugin_name, metric_name, metric_value) VALUES ('"+G+"','"+Q[k]+"','"+d+"');" );
+      }
+
+      } catch (SQLException e) {
+//TODO Auto-generated catch block
+e.printStackTrace();
+}
+
+
+
+      finally {
+
+          if ( resultat != null ) {
+              try {
+                  resultat.close();
+              } catch ( SQLException ignore ) {
+              }
+          }
+
+          if ( statement != null ) {
+              try {
+                  statement.close();
+              } catch ( SQLException ignore ) {
+              }
+          }
+
+          if ( connexion != null ) {
+              try {
+                  connexion.close();
+              } catch ( SQLException ignore ) {
+              }
+          }
 	
 	}
 
+}
 }
 
