@@ -27,10 +27,8 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-
-		//String chemin="/home/oscar/Documents/lutece-dev2/lutece-dev-example";
 		
-
+		// Creation of the Visitors
 		VisitorCompteur visitCount = new VisitorCompteur();
 		VisitorFiles visitFiles = new VisitorFiles();
 		VisitorSize visitSize= new VisitorSize();
@@ -38,14 +36,14 @@ public class Main {
 		VisitorClass visitClass= new VisitorClass();
 		VisitorPlugin visitPlugin= new VisitorPlugin();
 		
-		
+		// Find Current Repertory
 		String repCourant = new String(new java.io.File("").getAbsolutePath());
 		int v=repCourant.length();
-		repCourant=repCourant.substring(0,v-8);
 		
+		//PluginVisitor.size=13
+		repCourant=repCourant.substring(0,v-13);
 		
-
-											
+		// Accept visitors
 		FilesStructure.accept(visitSize, repCourant);
 		FilesStructure.accept(visitCount, repCourant);
 		FilesStructure.accept(visitStatic, repCourant);
@@ -54,23 +52,19 @@ public class Main {
 		FilesStructure.accept(visitPlugin,repCourant);
 
 		
-
-		//Creation of the HashMaps
+		// Creation of the HashMaps
 		HashMap mapSize = visitSize.getsizeL();
 		HashMap mapFile = visitFiles.getfichiers();
 		HashMap mapCount = visitCount.getL();
 		int T = visitStatic.getstatic();
 		int C = visitClass.getclass();
 		
-
+		// 
 		String[] M = visitPlugin.getplugin();
-		String G =M[0].substring(19, M[0].length()-13)+".xml";
-				
-			
-		 
-
+		System.out.println(M[0]);
+		String G =M[0].substring(19, M[0].length()-13)+".xml";		
 		
-		//JSON
+		// JSON
 
 		// Size in JSON
 		JSONObject jsonSize = new JSONObject();
@@ -110,77 +104,77 @@ public class Main {
 	    System.out.printf( "\n\nNumber of files: %s", jsonFile.toString(2) );
 	    
 	    
-	  //Number of Static Class and Class in JSON
-	  JSONObject jsonClass = new JSONObject();
-	  jsonClass.put("Nombre de méthodes Statiques", T);
-	  jsonClass.put("Nombre de classes", C);
+	    //Number of Static Class and Class in JSON
+	    JSONObject jsonClass = new JSONObject();
+	    jsonClass.put("Nombre de méthodes Statiques", T);
+	    jsonClass.put("Nombre de classes", C);
 
-	  System.out.printf( "\n\nJSON Classes: %s\n", jsonClass.toString(2) );
+	    System.out.printf( "\n\nJSON Classes: %s\n", jsonClass.toString(2) );
 
-	  
-	  //Create a JSON file
-	  /*try (FileWriter file = new FileWriter("D:/Users/beghinb/PluginVisitor/FichiersJson/Size.json")) {
-			try {
-				file.write("Size of files : \n ");
-				file.write(jsonSize.toString());
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			} catch (IOException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			} */
-	  VisitorSax xmlH = new VisitorSax();
-	  try {
 
-    	 SAXParserFactory factory = SAXParserFactory.newInstance();
+	    //SAX PARSING
+	    VisitorSax xmlH = new VisitorSax();
+	    try {
 
-         SAXParser parser = factory.newSAXParser();
+	    	SAXParserFactory factory = SAXParserFactory.newInstance();
+
+	    	SAXParser parser = factory.newSAXParser();
          
          
                   
-         parser.parse("../webapp/WEB-INF/plugins/"+G, xmlH);
-         //parser.parse("example.xml", xmlH);
+	    	parser.parse("../webapp/WEB-INF/plugins/"+G, xmlH);
+	    	//parser.parse("example.xml", xmlH);
          
-         System.out.println("Nombre de Xpages : "+xmlH.compteur);
+	    	System.out.println("Nombre de Xpages : "+xmlH.compteur);
 
 
-      } catch (DOMException e) {
+	    } catch (DOMException e) {
 
-         e.printStackTrace();
+	    	e.printStackTrace();
 
-      } catch (ParserConfigurationException e) {
+	    } catch (ParserConfigurationException e) {
 
-         e.printStackTrace();
-
-      } catch (TransformerFactoryConfigurationError e) {
-
-         e.printStackTrace();
-
-      } catch (SAXException e) {
+	    	e.printStackTrace();
+         
+	    } catch (TransformerFactoryConfigurationError e) {
 
          e.printStackTrace();
 
-      } catch (IOException e) {
-
-         // TODO Auto-generated catch block
+	    } catch (SAXException e) {
 
          e.printStackTrace();
+
+      	} catch (IOException e) {
+
+    	  // TODO Auto-generated catch block
+
+    	  e.printStackTrace();
 
       }
 	  
 	  
+	  	// DATABASE
 	  
-	  
-	  /* Connexion à la base de données */
-      String url = "jdbc:mysql://localhost/lutece_test2?autoReconnect=true&useUnicode=yes&characterEncoding=utf8";
-      String utilisateur = "root";
-      String motDePasse = "root";
-      Connection connexion = null;
-      Statement statement = null;
-  int resultat =0;
-      try {
+	  	/* Database Connection*/
+      	String url = "jdbc:mysql://localhost/lutece_test2?autoReconnect=true&useUnicode=yes&characterEncoding=utf8";
+      
+      	
+      	// Oscar
+      	/*
+      	String utilisateur = "root";
+      	String motDePasse = "root";
+      	*/
+      	
+      	// Baptiste
+      	String utilisateur = "root";
+      	String motDePasse = "motdepasse";
+      	
+      	
+      	
+      	Connection connexion = null;
+      	Statement statement = null;
+      	int resultat =0;
+      	try {
 
     	    try {
 				Class.forName( "com.mysql.jdbc.Driver" );
@@ -190,61 +184,68 @@ public class Main {
 			}
           connexion = DriverManager.getConnection( url, utilisateur, motDePasse );
 
-          /* Ici, nous placerons nos requêtes vers la BDD */
-          /* ... */
+          /* Cr�ation de l'objet g�rant les requ�tes */
+          statement = connexion.createStatement();
+          String V =G.substring(0, G.length()-4);
 
-          /* Création de l'objet gérant les requêtes */
-      statement = connexion.createStatement();
-      String V =G.substring(0, G.length()-4);
+          // Add Size in Database
+          Set<String> L= mapSize.keySet();
+          String[] S = L.toArray(new String[L.size()]);
+          for(int k =0; k<S.length;k++){
+        	  float h = (float)mapSize.get(S[k]);
 
-      /* Exécution d'une requête de lecture */
-      Set<String> L= mapSize.keySet();
-      String[] S = L.toArray(new String[L.size()]);
-      for(int k =0; k<S.length;k++){
-       float h = (float)mapSize.get(S[k]);
+        	  resultat = statement.executeUpdate( "INSERT INTO lutece_visitor ( plugin_name, metric_name, metric_type, metric_value) VALUES ('"+V+"', 'Size (ko)', '"+S[k]+"','"+h/1024+"');" );
+      
+          }
+      
 
-      resultat = statement.executeUpdate( "INSERT INTO lutece_visitor ( plugin_name, metric_name, metric_type, metric_value) VALUES ('"+V+"', 'Size (ko)', '"+S[k]+"','"+h/1024+"');" );
+          // Add Line Number in Database
+          Set<String> P= mapCount.keySet();
+          String[] Q = P.toArray(new String[L.size()]);
+          for(int k =0; k<Q.length;k++){
+        	  float d = (float)mapCount.get(Q[k]);
+
+        	  resultat = statement.executeUpdate( "INSERT INTO lutece_visitor ( plugin_name, metric_name, metric_type, metric_value) VALUES ('"+V+"', 'Line Number', '"+Q[k]+"','"+d+"');" );
+      
+          }
+      
+
+          // Add File Number in Database
+        Set<String> FileSet= mapFile.keySet();
+      	String[] QQ = FileSet.toArray(new String[L.size()]);
+      	for(int k =0; k<QQ.length;k++){
+      		float d = (float)mapCount.get(QQ[k]);
+
+      		resultat = statement.executeUpdate( "INSERT INTO lutece_visitor ( plugin_name, metric_name, metric_type, metric_value) VALUES ('"+V+"', 'File Number', '"+QQ[k]+"','"+d+"');" );
+      
+      	}
+      	
+
+      	// Add Number of Static Methods in Database
+      	resultat = statement.executeUpdate( "INSERT INTO lutece_visitor ( plugin_name, metric_name, metric_type, metric_value) VALUES ('"+V+"', 'Number of Static Methods', '"+"Static Method"+"','"+T+"');" );
+      
+
+      	// Add Number of Classes in Database
+      	resultat = statement.executeUpdate( "INSERT INTO lutece_visitor ( plugin_name, metric_name, metric_type, metric_value) VALUES ('"+V+"', 'Number of Classes', '"+"Classes"+"','"+C+"');" );
+      
+
+      	// Add Number of Xpages in Database
+      	resultat = statement.executeUpdate( "INSERT INTO lutece_visitor ( plugin_name, metric_name, metric_type, metric_value) VALUES ('"+V+"', 'Number of Xpages', '"+"Xpages"+"','"+xmlH.compteur+"');" );
+      
+      	// Add Name of Xpages in Database
+      	for(int k =0; k<xmlH.compteur;k++){
+      		float d = (float)mapCount.get(QQ[k]);
+
+      		resultat = statement.executeUpdate( "INSERT INTO lutece_visitor ( plugin_name, metric_name, metric_type, metric_value) VALUES ('"+V+"', 'Xpage Name', '"+xmlH.testt+"','"+(k+1)+"');" );
+      	}
+
+      	} catch (SQLException e) {
+    	  //TODO Auto-generated catch block
+    	  e.printStackTrace();
       }
-
-      Set<String> P= mapCount.keySet();
-      String[] Q = P.toArray(new String[L.size()]);
-      for(int k =0; k<Q.length;k++){
-       float d = (float)mapCount.get(Q[k]);
-
-      resultat = statement.executeUpdate( "INSERT INTO lutece_visitor ( plugin_name, metric_name, metric_type, metric_value) VALUES ('"+V+"', 'Line Number', '"+Q[k]+"','"+d+"');" );
-      }
-      
-      Set<String> FileSet= mapFile.keySet();
-      String[] QQ = FileSet.toArray(new String[L.size()]);
-      for(int k =0; k<QQ.length;k++){
-       float d = (float)mapCount.get(QQ[k]);
-
-      resultat = statement.executeUpdate( "INSERT INTO lutece_visitor ( plugin_name, metric_name, metric_type, metric_value) VALUES ('"+V+"', 'File Number', '"+QQ[k]+"','"+d+"');" );
-      }
-      
-      
-      resultat = statement.executeUpdate( "INSERT INTO lutece_visitor ( plugin_name, metric_name, metric_type, metric_value) VALUES ('"+V+"', 'Number of Static Methods', '"+"Static Method"+"','"+T+"');" );
-      
-      resultat = statement.executeUpdate( "INSERT INTO lutece_visitor ( plugin_name, metric_name, metric_type, metric_value) VALUES ('"+V+"', 'Number of Classes', '"+"Classes"+"','"+C+"');" );
-      
-      resultat = statement.executeUpdate( "INSERT INTO lutece_visitor ( plugin_name, metric_name, metric_type, metric_value) VALUES ('"+V+"', 'Number of Xpages', '"+"Xpages"+"','"+xmlH.compteur+"');" );
-      
-      for(int k =0; k<xmlH.compteur;k++){
-          float d = (float)mapCount.get(QQ[k]);
-
-         resultat = statement.executeUpdate( "INSERT INTO lutece_visitor ( plugin_name, metric_name, metric_type, metric_value) VALUES ('"+V+"', 'Xpage Name', '"+xmlH.testt+"','"+(k+1)+"');" );
-         }
-
-      } catch (SQLException e) {
-//TODO Auto-generated catch block
-e.printStackTrace();
-}
-
-
 
       finally {
 
-         
 
           if ( statement != null ) {
               try {
@@ -262,6 +263,6 @@ e.printStackTrace();
 	
 	}
 
-}
+	}
 }
 

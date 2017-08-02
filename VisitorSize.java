@@ -88,7 +88,8 @@ public class VisitorSize implements Visitor{
 	
 	public boolean testextend(String docPath){
 		if(!docPath.startsWith(".") && !docPath.startsWith("target") && !docPath.endsWith(".otf") && !docPath.endsWith(".eot") && !docPath.endsWith(".svg") && !docPath.endsWith(".ttf") && !docPath.endsWith(".woff")
-				&& !docPath.endsWith(".woff2") && !docPath.endsWith(".gif") && !docPath.endsWith(".gitignore") && !docPath.endsWith(".png") && !docPath.endsWith(".jpg") && !docPath.endsWith(".jpeg") && !docPath.endsWith(".ico") && !docPath.endsWith(".log")){
+				&& !docPath.endsWith(".woff2") && !docPath.endsWith(".gif") && !docPath.endsWith(".gitignore") && !docPath.endsWith(".png") && !docPath.endsWith(".jpg") && !docPath.endsWith(".jpeg") && !docPath.endsWith(".ico") && !docPath.endsWith(".log")
+				&& !docPath.endsWith(".classpath") && !docPath.endsWith(".project")){
 			return true;
 		}
 		return false;
