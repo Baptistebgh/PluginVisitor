@@ -47,7 +47,7 @@ public class VisitorSize implements Visitor{
 
 	public void visit(String docPath) throws IOException {
 		float size = 0;
-		int d = 0;
+		float d = 0;
 	
 		File fis = new File(docPath);
 

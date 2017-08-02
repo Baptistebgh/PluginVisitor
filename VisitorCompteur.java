@@ -15,8 +15,8 @@ import java.util.Set;
 public class VisitorCompteur implements Visitor{
 
 	HashMap L = new HashMap();
-	int sansextension=0;
-	int total=0;
+	float sansextension=0;
+	float total=0;
 
 	public static <K, V extends Comparable<? super V>> HashMap sortByValue( Map<K, V> map )
 	{
@@ -46,8 +46,8 @@ public class VisitorCompteur implements Visitor{
 
 	@Override
 	public void visit(String docPath) throws IOException {
-		int count = 0;
-		int d = 0;
+		float count = 0;
+		float d = 0;
 
 		FileInputStream fis = new FileInputStream(docPath);
 
@@ -69,7 +69,7 @@ public class VisitorCompteur implements Visitor{
 			}
 
 			else if (L.containsKey(docPath.substring(docPath.lastIndexOf(".")))){
-				int h = (int) L.get(docPath.substring(docPath.lastIndexOf(".")));
+				float h = (float) L.get(docPath.substring(docPath.lastIndexOf(".")));
 				h=h+count;
 				L.put(docPath.substring(docPath.lastIndexOf(".")),h);
 				total=total+count;

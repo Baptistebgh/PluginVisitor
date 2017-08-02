@@ -10,6 +10,8 @@ import org.xml.sax.helpers.DefaultHandler;
 public class VisitorSax extends DefaultHandler{
 
    public int compteur=0;
+   
+   public String testt;
 
    //Nous nous servirons de cette variable plus tard
 
@@ -89,7 +91,8 @@ public class VisitorSax extends DefaultHandler{
 	   
 	   if (node.equals("application-class")) {
 	   compteur+=1;
-       System.out.println("Nom de la Xpage n°" + compteur + ": "+ new String(ch, start, end));
+	   testt =new String(ch, start, end);
+       System.out.println("Nom de la Xpage n°" + compteur + ": "+testt);
        node="";
      //  System.out.println("Nombre de Xpages : " + compteur);
        

@@ -131,14 +131,14 @@ public class Main {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			} */
-
+	  VisitorSax xmlH = new VisitorSax();
 	  try {
 
     	 SAXParserFactory factory = SAXParserFactory.newInstance();
 
          SAXParser parser = factory.newSAXParser();
          
-         VisitorSax xmlH = new VisitorSax();
+         
                   
          parser.parse("../webapp/WEB-INF/plugins/"+G, xmlH);
          //parser.parse("example.xml", xmlH);
@@ -179,7 +179,7 @@ public class Main {
       String motDePasse = "root";
       Connection connexion = null;
       Statement statement = null;
-  ResultSet resultat = null;
+  int resultat =0;
       try {
 
     	    try {
@@ -195,7 +195,7 @@ public class Main {
 
           /* Création de l'objet gérant les requêtes */
       statement = connexion.createStatement();
-
+      String V =G.substring(0, G.length()-4);
 
       /* Exécution d'une requête de lecture */
       Set<String> L= mapSize.keySet();
@@ -203,7 +203,7 @@ public class Main {
       for(int k =0; k<S.length;k++){
        float h = (float)mapSize.get(S[k]);
 
-      resultat = statement.executeQuery( "INSERT INTO lutece_visitor ( plugin_name, metric_name, metric_value) VALUES ('"+G+"','"+S[k]+"','"+h+"');" );
+      resultat = statement.executeUpdate( "INSERT INTO lutece_visitor ( plugin_name, metric_name, metric_type, metric_value) VALUES ('"+V+"', 'Size (ko)', '"+S[k]+"','"+h/1024+"');" );
       }
 
       Set<String> P= mapCount.keySet();
@@ -211,8 +211,29 @@ public class Main {
       for(int k =0; k<Q.length;k++){
        float d = (float)mapCount.get(Q[k]);
 
-      resultat = statement.executeQuery( "INSERT INTO lutece_visitor ( plugin_name, metric_name, metric_value) VALUES ('"+G+"','"+Q[k]+"','"+d+"');" );
+      resultat = statement.executeUpdate( "INSERT INTO lutece_visitor ( plugin_name, metric_name, metric_type, metric_value) VALUES ('"+V+"', 'Line Number', '"+Q[k]+"','"+d+"');" );
       }
+      
+      Set<String> FileSet= mapFile.keySet();
+      String[] QQ = FileSet.toArray(new String[L.size()]);
+      for(int k =0; k<QQ.length;k++){
+       float d = (float)mapCount.get(QQ[k]);
+
+      resultat = statement.executeUpdate( "INSERT INTO lutece_visitor ( plugin_name, metric_name, metric_type, metric_value) VALUES ('"+V+"', 'File Number', '"+QQ[k]+"','"+d+"');" );
+      }
+      
+      
+      resultat = statement.executeUpdate( "INSERT INTO lutece_visitor ( plugin_name, metric_name, metric_type, metric_value) VALUES ('"+V+"', 'Number of Static Methods', '"+"Static Method"+"','"+T+"');" );
+      
+      resultat = statement.executeUpdate( "INSERT INTO lutece_visitor ( plugin_name, metric_name, metric_type, metric_value) VALUES ('"+V+"', 'Number of Classes', '"+"Classes"+"','"+C+"');" );
+      
+      resultat = statement.executeUpdate( "INSERT INTO lutece_visitor ( plugin_name, metric_name, metric_type, metric_value) VALUES ('"+V+"', 'Number of Xpages', '"+"Xpages"+"','"+xmlH.compteur+"');" );
+      
+      for(int k =0; k<xmlH.compteur;k++){
+          float d = (float)mapCount.get(QQ[k]);
+
+         resultat = statement.executeUpdate( "INSERT INTO lutece_visitor ( plugin_name, metric_name, metric_type, metric_value) VALUES ('"+V+"', 'Xpage Name', '"+xmlH.testt+"','"+(k+1)+"');" );
+         }
 
       } catch (SQLException e) {
 //TODO Auto-generated catch block
@@ -223,12 +244,7 @@ e.printStackTrace();
 
       finally {
 
-          if ( resultat != null ) {
-              try {
-                  resultat.close();
-              } catch ( SQLException ignore ) {
-              }
-          }
+         
 
           if ( statement != null ) {
               try {
