@@ -231,7 +231,9 @@ public class Main {
       
 
       	// Add Number of Xpages in Database
-      	resultat = statement.executeUpdate( "INSERT INTO lutece_visitor ( plugin_name, metric_name, metric_type, metric_value) VALUES ('"+V+"', 'Number of Xpages', '"+"Xpages"+"','"+xmlH.compteur+"');" );
+      	if(xmlH.compteur!=0){
+      		resultat = statement.executeUpdate( "INSERT INTO lutece_visitor ( plugin_name, metric_name, metric_type, metric_value) VALUES ('"+V+"', 'Number of Xpages', '"+"Xpages"+"','"+xmlH.compteur+"');" );
+      	}
       
       	// Add Name of Xpages in Database
       	for(int k =0; k<xmlH.compteur;k++){
@@ -239,7 +241,9 @@ public class Main {
 
       		resultat = statement.executeUpdate( "INSERT INTO lutece_visitor ( plugin_name, metric_name, metric_type, metric_value) VALUES ('"+V+"', 'Xpage Name', '"+xmlH.test[k]+"','"+(k+1)+"');" );
       	}
-      	resultat = statement.executeUpdate( "INSERT INTO lutece_visitor ( plugin_name, metric_name, metric_type, metric_value) VALUES ('"+V+"', 'Number of Adminfeatures', '"+"Admin"+"','"+xmlH.nombre+"');" );
+      	if(xmlH.nombre!=0){
+      		resultat = statement.executeUpdate( "INSERT INTO lutece_visitor ( plugin_name, metric_name, metric_type, metric_value) VALUES ('"+V+"', 'Number of Adminfeatures', '"+"Admin"+"','"+xmlH.nombre+"');" );
+      	}
       	
       	for(int k =0; k<xmlH.nombre;k++){
       		float d = (float)mapCount.get(QQ[k]);
@@ -247,7 +251,9 @@ public class Main {
       		resultat = statement.executeUpdate( "INSERT INTO lutece_visitor ( plugin_name, metric_name, metric_type, metric_value) VALUES ('"+V+"', 'Admin features', '"+xmlH.test[100+k]+"','"+(k+1)+"');" );
       	}
       	
-            resultat = statement.executeUpdate( "INSERT INTO lutece_visitor ( plugin_name, metric_name, metric_type, metric_value) VALUES ('"+V+"', 'Number of css-stylesheet', '"+"css"+"','"+xmlH.css+"');" );
+      	if(xmlH.css!=0){
+      		resultat = statement.executeUpdate( "INSERT INTO lutece_visitor ( plugin_name, metric_name, metric_type, metric_value) VALUES ('"+V+"', 'Number of css-stylesheet', '"+"css"+"','"+xmlH.css+"');" );
+      	}
       	
       	for(int k =0; k<xmlH.css;k++){
       		float d = (float)mapCount.get(QQ[k]);
@@ -255,33 +261,43 @@ public class Main {
       		resultat = statement.executeUpdate( "INSERT INTO lutece_visitor ( plugin_name, metric_name, metric_type, metric_value) VALUES ('"+V+"', 'Css-stylesheet', '"+xmlH.test[200+k]+"','"+(k+1)+"');" );
       	}
       	
-      	resultat = statement.executeUpdate( "INSERT INTO lutece_visitor ( plugin_name, metric_name, metric_type, metric_value) VALUES ('"+V+"', 'Number of javascript-file', '"+"jvs"+"','"+xmlH.jvs+"');" );
+      	if(xmlH.jvs!=0){
+      		resultat = statement.executeUpdate( "INSERT INTO lutece_visitor ( plugin_name, metric_name, metric_type, metric_value) VALUES ('"+V+"', 'Number of javascript-file', '"+"jvs"+"','"+xmlH.jvs+"');" );
+      	}
       	for(int k =0; k<xmlH.jvs;k++){
       		float d = (float)mapCount.get(QQ[k]);
 
       		resultat = statement.executeUpdate( "INSERT INTO lutece_visitor ( plugin_name, metric_name, metric_type, metric_value) VALUES ('"+V+"', 'Javascript-file', '"+xmlH.test[300+k]+"','"+(k+1)+"');" );
       	}
       	
-      	resultat = statement.executeUpdate( "INSERT INTO lutece_visitor ( plugin_name, metric_name, metric_type, metric_value) VALUES ('"+V+"', 'Number of portlet', '"+"portlet"+"','"+xmlH.portlet+"');" );
+      	if(xmlH.portlet!=0){
+      		resultat = statement.executeUpdate( "INSERT INTO lutece_visitor ( plugin_name, metric_name, metric_type, metric_value) VALUES ('"+V+"', 'Number of portlet', '"+"portlet"+"','"+xmlH.portlet+"');" );
+      	}
       	for(int k =0; k<xmlH.portlet;k++){
       		float d = (float)mapCount.get(QQ[k]);
 
       		resultat = statement.executeUpdate( "INSERT INTO lutece_visitor ( plugin_name, metric_name, metric_type, metric_value) VALUES ('"+V+"', 'Portlet', '"+xmlH.test[400+k]+"','"+(k+1)+"');" );
       	}
-      	resultat = statement.executeUpdate( "INSERT INTO lutece_visitor ( plugin_name, metric_name, metric_type, metric_value) VALUES ('"+V+"', 'Number of daemon', '"+"daemon"+"','"+xmlH.daemon+"');" );
+      	if(xmlH.daemon!=0){
+      		resultat = statement.executeUpdate( "INSERT INTO lutece_visitor ( plugin_name, metric_name, metric_type, metric_value) VALUES ('"+V+"', 'Number of daemon', '"+"daemon"+"','"+xmlH.daemon+"');" );
+      	}
       	for(int k =0; k<xmlH.daemon;k++){
       		float d = (float)mapCount.get(QQ[k]);
 
       		resultat = statement.executeUpdate( "INSERT INTO lutece_visitor ( plugin_name, metric_name, metric_type, metric_value) VALUES ('"+V+"', 'daemon', '"+xmlH.test[500+k].trim()+"','"+(k+1)+"');" );
       	}
-      	resultat = statement.executeUpdate( "INSERT INTO lutece_visitor ( plugin_name, metric_name, metric_type, metric_value) VALUES ('"+V+"', 'Number of rbac', '"+"rbac"+"','"+xmlH.rbac+"');" );
+      	if(xmlH.rbac!=0){
+      		resultat = statement.executeUpdate( "INSERT INTO lutece_visitor ( plugin_name, metric_name, metric_type, metric_value) VALUES ('"+V+"', 'Number of rbac', '"+"rbac"+"','"+xmlH.rbac+"');" );
+      	}
       	for(int k =0; k<xmlH.rbac;k++){
       		float d = (float)mapCount.get(QQ[k]);
 
       		resultat = statement.executeUpdate( "INSERT INTO lutece_visitor ( plugin_name, metric_name, metric_type, metric_value) VALUES ('"+V+"', 'Rbac', '"+xmlH.test[600+k]+"','"+(k+1)+"');" );
       	}
       	
-      	resultat = statement.executeUpdate( "INSERT INTO lutece_visitor ( plugin_name, metric_name, metric_type, metric_value) VALUES ('"+V+"', 'Number of filter', '"+"filter"+"','"+xmlH.filter+"');" );
+      	if(xmlH.filter!=0){
+      		resultat = statement.executeUpdate( "INSERT INTO lutece_visitor ( plugin_name, metric_name, metric_type, metric_value) VALUES ('"+V+"', 'Number of filter', '"+"filter"+"','"+xmlH.filter+"');" );
+      	}
       	for(int k =0; k<xmlH.filter;k++){
       		float d = (float)mapCount.get(QQ[k]);
 
