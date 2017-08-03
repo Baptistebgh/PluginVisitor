@@ -160,17 +160,17 @@ public class Main {
       
       	
       	// Oscar
-      	
+      	/*
       	String utilisateur = "root";
       	String motDePasse = "root";
-      	
+      	*/
       	
       	// Baptiste
-      	/*
+      	
       	String utilisateur = "root";
       	String motDePasse = "motdepasse";
       	
-      	*/
+      	
       	
       	Connection connexion = null;
       	Statement statement = null;
@@ -247,7 +247,7 @@ public class Main {
       		resultat = statement.executeUpdate( "INSERT INTO lutece_visitor ( plugin_name, metric_name, metric_type, metric_value) VALUES ('"+V+"', 'Admin features', '"+xmlH.test[100+k]+"','"+(k+1)+"');" );
       	}
       	
-            resultat = statement.executeUpdate( "INSERT INTO lutece_visitor ( plugin_name, metric_name, metric_type, metric_value) VALUES ('"+V+"', 'Number of css-stlysheet', '"+"css"+"','"+xmlH.css+"');" );
+            resultat = statement.executeUpdate( "INSERT INTO lutece_visitor ( plugin_name, metric_name, metric_type, metric_value) VALUES ('"+V+"', 'Number of css-stylesheet', '"+"css"+"','"+xmlH.css+"');" );
       	
       	for(int k =0; k<xmlH.css;k++){
       		float d = (float)mapCount.get(QQ[k]);
