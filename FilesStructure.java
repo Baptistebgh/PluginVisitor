@@ -47,7 +47,7 @@ public class FilesStructure{
 }
 	
 	public static boolean testrepo(String test){
-		if(test.startsWith("Visitor") || test.startsWith("target") || test.startsWith(".")){
+		if(test.startsWith("PluginVisitor") || test.startsWith("target") || test.startsWith(".")){
 		return false; 
 	}
 	

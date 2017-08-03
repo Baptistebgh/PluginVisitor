@@ -11,7 +11,11 @@ public class VisitorSax extends DefaultHandler{
 
    public int compteur=0;
    
-   public String testt;
+   public int nombre=0;
+   
+   public int css=0;
+   
+   public String[] test = new String[3000];
 
    //Nous nous servirons de cette variable plus tard
 
@@ -91,10 +95,25 @@ public class VisitorSax extends DefaultHandler{
 	   
 	   if (node.equals("application-class")) {
 	   compteur+=1;
-	   testt =new String(ch, start, end);
-       System.out.println("Nom de la Xpage n°" + compteur + ": "+testt);
+	   test[compteur-1] =new String(ch, start, end);
+       System.out.println("Nom de la Xpage n°" + compteur + ": "+test[compteur-1]);
        node="";
+	   }
      //  System.out.println("Nombre de Xpages : " + compteur);
+       
+       else if (node.equals("feature-id")){
+    	   nombre=nombre+1;
+    	   test[100+nombre-1]= new String(ch, start, end);
+    	   System.out.println("Nom de l'adminfeature n°" + nombre + ": "+test[100+nombre-1]);
+    	   node="";
+       }
+	   
+       else if(node.equals("css-stylesheet")){
+    	   css=css+1;
+    	   test[200+css-1]= new String(ch, start, end);
+    	   System.out.println("Nom de la feuille de style n°" + css + ": "+test[200+css-1]);
+    	   node="";
+       }
        
 
       
@@ -102,4 +121,4 @@ public class VisitorSax extends DefaultHandler{
 	   }
 
 
-}}
+}

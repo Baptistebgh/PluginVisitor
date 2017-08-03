@@ -61,7 +61,7 @@ public class Main {
 		
 		// 
 		String[] M = visitPlugin.getplugin();
-		System.out.println(M[0]);
+		
 		String G =M[0].substring(19, M[0].length()-13)+".xml";		
 		
 		// JSON
@@ -160,16 +160,17 @@ public class Main {
       
       	
       	// Oscar
-      	/*
+      	
       	String utilisateur = "root";
       	String motDePasse = "root";
-      	*/
+      	
       	
       	// Baptiste
+      	/*
       	String utilisateur = "root";
       	String motDePasse = "motdepasse";
       	
-      	
+      	*/
       	
       	Connection connexion = null;
       	Statement statement = null;
@@ -184,10 +185,10 @@ public class Main {
 			}
           connexion = DriverManager.getConnection( url, utilisateur, motDePasse );
 
-          /* Création de l'objet gérant les requêtes */
+          /* Crï¿½ation de l'objet gï¿½rant les requï¿½tes */
           statement = connexion.createStatement();
           String V =G.substring(0, G.length()-4);
-
+          //if(statement.executeQuery("SELECT metric_value FROM lutece_visitor WHERE plugin_name='"+V+"' AND metric_type=Xpages" )==null){
           // Add Size in Database
           Set<String> L= mapSize.keySet();
           String[] S = L.toArray(new String[L.size()]);
@@ -214,7 +215,7 @@ public class Main {
         Set<String> FileSet= mapFile.keySet();
       	String[] QQ = FileSet.toArray(new String[L.size()]);
       	for(int k =0; k<QQ.length;k++){
-      		float d = (float)mapCount.get(QQ[k]);
+      		int d = (int)mapFile.get(QQ[k]);
 
       		resultat = statement.executeUpdate( "INSERT INTO lutece_visitor ( plugin_name, metric_name, metric_type, metric_value) VALUES ('"+V+"', 'File Number', '"+QQ[k]+"','"+d+"');" );
       
@@ -236,13 +237,29 @@ public class Main {
       	for(int k =0; k<xmlH.compteur;k++){
       		float d = (float)mapCount.get(QQ[k]);
 
-      		resultat = statement.executeUpdate( "INSERT INTO lutece_visitor ( plugin_name, metric_name, metric_type, metric_value) VALUES ('"+V+"', 'Xpage Name', '"+xmlH.testt+"','"+(k+1)+"');" );
+      		resultat = statement.executeUpdate( "INSERT INTO lutece_visitor ( plugin_name, metric_name, metric_type, metric_value) VALUES ('"+V+"', 'Xpage Name', '"+xmlH.test[k]+"','"+(k+1)+"');" );
+      	}
+      	resultat = statement.executeUpdate( "INSERT INTO lutece_visitor ( plugin_name, metric_name, metric_type, metric_value) VALUES ('"+V+"', 'Number of Adminfeatures', '"+"Admin"+"','"+xmlH.nombre+"');" );
+      	
+      	for(int k =0; k<xmlH.nombre;k++){
+      		float d = (float)mapCount.get(QQ[k]);
+
+      		resultat = statement.executeUpdate( "INSERT INTO lutece_visitor ( plugin_name, metric_name, metric_type, metric_value) VALUES ('"+V+"', 'Admin features', '"+xmlH.test[100+k]+"','"+(k+1)+"');" );
+      	}
+      	
+            resultat = statement.executeUpdate( "INSERT INTO lutece_visitor ( plugin_name, metric_name, metric_type, metric_value) VALUES ('"+V+"', 'Number of css-stlysheet', '"+"css"+"','"+xmlH.css+"');" );
+      	
+      	for(int k =0; k<xmlH.css;k++){
+      		float d = (float)mapCount.get(QQ[k]);
+
+      		resultat = statement.executeUpdate( "INSERT INTO lutece_visitor ( plugin_name, metric_name, metric_type, metric_value) VALUES ('"+V+"', 'Css-stylesheet', '"+xmlH.test[200+k]+"','"+(k+1)+"');" );
       	}
 
-      	} catch (SQLException e) {
+      	 }catch (SQLException e) {
     	  //TODO Auto-generated catch block
     	  e.printStackTrace();
       }
+      
 
       finally {
 
