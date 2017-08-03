@@ -14,7 +14,7 @@ public class VisitorSax extends DefaultHandler{
    public int css=0;
    public int jvs=0;
    public int portlet=0;
-   public int deamon=0;
+   public int daemon=0;
    public int rbac=0;
    public int filter=0;
    
@@ -131,13 +131,13 @@ public class VisitorSax extends DefaultHandler{
     	   System.out.println("Nom de la portlet n°" + portlet + ": "+test[400+portlet-1]);
     	   node="";
        }
-       else if(node.equals("deamon-class")){
-    	   deamon=deamon+1;
-    	   test[500+deamon-1]= new String(ch, start, end);
-    	   System.out.println("Nom de la portlet n°" + deamon + ": "+test[500+deamon-1]);
+       else if(node.equals("daemon-class")){
+    	   daemon=daemon+1;
+    	   test[500+daemon-1]= new String(ch, start, end);
+    	   System.out.println("Nom de la portlet n°" + daemon + ": "+test[500+daemon-1]);
     	   node="";
        }
-       else if(node.equals("rbac-ressource-type-class")){
+       else if(node.equals("rbac-resource-type-class")){
     	   rbac=rbac+1;
     	   test[600+rbac-1]= new String(ch, start, end);
     	   System.out.println("Nom de la Rbac n°" + rbac + ": "+test[600+rbac-1]);

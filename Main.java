@@ -263,25 +263,25 @@ public class Main {
       	}
       	
       	resultat = statement.executeUpdate( "INSERT INTO lutece_visitor ( plugin_name, metric_name, metric_type, metric_value) VALUES ('"+V+"', 'Number of portlet', '"+"portlet"+"','"+xmlH.portlet+"');" );
-      	for(int k =0; k<xmlH.jvs;k++){
+      	for(int k =0; k<xmlH.portlet;k++){
       		float d = (float)mapCount.get(QQ[k]);
 
       		resultat = statement.executeUpdate( "INSERT INTO lutece_visitor ( plugin_name, metric_name, metric_type, metric_value) VALUES ('"+V+"', 'Portlet', '"+xmlH.test[400+k]+"','"+(k+1)+"');" );
       	}
-      	resultat = statement.executeUpdate( "INSERT INTO lutece_visitor ( plugin_name, metric_name, metric_type, metric_value) VALUES ('"+V+"', 'Number of deamon', '"+"deamon"+"','"+xmlH.deamon+"');" );
-      	for(int k =0; k<xmlH.deamon;k++){
+      	resultat = statement.executeUpdate( "INSERT INTO lutece_visitor ( plugin_name, metric_name, metric_type, metric_value) VALUES ('"+V+"', 'Number of daemon', '"+"daemon"+"','"+xmlH.daemon+"');" );
+      	for(int k =0; k<xmlH.daemon;k++){
       		float d = (float)mapCount.get(QQ[k]);
 
-      		resultat = statement.executeUpdate( "INSERT INTO lutece_visitor ( plugin_name, metric_name, metric_type, metric_value) VALUES ('"+V+"', 'Deamon', '"+xmlH.test[500+k]+"','"+(k+1)+"');" );
+      		resultat = statement.executeUpdate( "INSERT INTO lutece_visitor ( plugin_name, metric_name, metric_type, metric_value) VALUES ('"+V+"', 'daemon', '"+xmlH.test[500+k]+"','"+(k+1)+"');" );
       	}
-      	resultat = statement.executeUpdate( "INSERT INTO lutece_visitor ( plugin_name, metric_name, metric_type, metric_value) VALUES ('"+V+"', 'Number of rbac', '"+"deamon"+"','"+xmlH.deamon+"');" );
+      	resultat = statement.executeUpdate( "INSERT INTO lutece_visitor ( plugin_name, metric_name, metric_type, metric_value) VALUES ('"+V+"', 'Number of rbac', '"+"rbac"+"','"+xmlH.rbac+"');" );
       	for(int k =0; k<xmlH.rbac;k++){
       		float d = (float)mapCount.get(QQ[k]);
 
       		resultat = statement.executeUpdate( "INSERT INTO lutece_visitor ( plugin_name, metric_name, metric_type, metric_value) VALUES ('"+V+"', 'Rbac', '"+xmlH.test[600+k]+"','"+(k+1)+"');" );
       	}
       	
-      	resultat = statement.executeUpdate( "INSERT INTO lutece_visitor ( plugin_name, metric_name, metric_type, metric_value) VALUES ('"+V+"', 'Number of filter', '"+"filter"+"','"+xmlH.deamon+"');" );
+      	resultat = statement.executeUpdate( "INSERT INTO lutece_visitor ( plugin_name, metric_name, metric_type, metric_value) VALUES ('"+V+"', 'Number of filter', '"+"filter"+"','"+xmlH.filter+"');" );
       	for(int k =0; k<xmlH.filter;k++){
       		float d = (float)mapCount.get(QQ[k]);
 
