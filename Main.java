@@ -160,17 +160,17 @@ public class Main {
       
       	
       	// Oscar
-      	/*
+      	
       	String utilisateur = "root";
       	String motDePasse = "root";
-      	*/
+      	
       	
       	// Baptiste
-      	
+      	/*
       	String utilisateur = "root";
       	String motDePasse = "motdepasse";
       	
-      	
+      	*/
       	
       	Connection connexion = null;
       	Statement statement = null;
@@ -253,6 +253,20 @@ public class Main {
       		float d = (float)mapCount.get(QQ[k]);
 
       		resultat = statement.executeUpdate( "INSERT INTO lutece_visitor ( plugin_name, metric_name, metric_type, metric_value) VALUES ('"+V+"', 'Css-stylesheet', '"+xmlH.test[200+k]+"','"+(k+1)+"');" );
+      	}
+      	
+      	resultat = statement.executeUpdate( "INSERT INTO lutece_visitor ( plugin_name, metric_name, metric_type, metric_value) VALUES ('"+V+"', 'Number of javascript-file', '"+"jvs"+"','"+xmlH.jvs+"');" );
+      	for(int k =0; k<xmlH.jvs;k++){
+      		float d = (float)mapCount.get(QQ[k]);
+
+      		resultat = statement.executeUpdate( "INSERT INTO lutece_visitor ( plugin_name, metric_name, metric_type, metric_value) VALUES ('"+V+"', 'Javascript-file', '"+xmlH.test[300+k]+"','"+(k+1)+"');" );
+      	}
+      	
+      	resultat = statement.executeUpdate( "INSERT INTO lutece_visitor ( plugin_name, metric_name, metric_type, metric_value) VALUES ('"+V+"', 'Number of portlet', '"+"portlet"+"','"+xmlH.portlet+"');" );
+      	for(int k =0; k<xmlH.jvs;k++){
+      		float d = (float)mapCount.get(QQ[k]);
+
+      		resultat = statement.executeUpdate( "INSERT INTO lutece_visitor ( plugin_name, metric_name, metric_type, metric_value) VALUES ('"+V+"', 'Portlet', '"+xmlH.test[400+k]+"','"+(k+1)+"');" );
       	}
 
       	 }catch (SQLException e) {

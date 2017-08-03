@@ -10,10 +10,10 @@ import org.xml.sax.helpers.DefaultHandler;
 public class VisitorSax extends DefaultHandler{
 
    public int compteur=0;
-   
    public int nombre=0;
-   
    public int css=0;
+   public int jvs=0;
+   public int portlet=0;
    
    public String[] test = new String[3000];
 
@@ -112,6 +112,19 @@ public class VisitorSax extends DefaultHandler{
     	   css=css+1;
     	   test[200+css-1]= new String(ch, start, end);
     	   System.out.println("Nom de la feuille de style n°" + css + ": "+test[200+css-1]);
+    	   node="";
+       }
+	   
+       else if(node.equals("javascript-file")){
+    	   jvs=jvs+1;
+    	   test[300+jvs-1]= new String(ch, start, end);
+    	   System.out.println("Nom de la feuille de style n°" + jvs + ": "+test[300+jvs-1]);
+    	   node="";
+       }
+       else if(node.equals("portlet-class")){
+    	   portlet=portlet+1;
+    	   test[400+portlet-1]= new String(ch, start, end);
+    	   System.out.println("Nom de la portlet n°" + portlet + ": "+test[400+portlet-1]);
     	   node="";
        }
        
