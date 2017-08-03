@@ -2,8 +2,8 @@
 <classpath>
 	<classpathentry kind="src" path=""/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="/home/oscar/Téléchargements/json-20140107.jar"/>
-	<classpathentry kind="lib" path="/home/oscar/Téléchargements/mysql-connector-java-5.1.21.jar"/>
-	<classpathentry kind="lib" path="/home/oscar/Téléchargements/OracleSupportFiles.zip"/>
+	<classpathentry kind="lib" path="D:/Users/beghinb/Desktop/Downloads/json-20140107.jar"/>
+	<classpathentry kind="lib" path="D:/Users/beghinb/Desktop/Downloads/mysql-connector-java-5.1.18.jar"/>
+	<classpathentry kind="lib" path="D:/Users/beghinb/Desktop/Downloads/jaxp-api-1.4.5.jar"/>
 	<classpathentry kind="output" path=""/>
 </classpath>
