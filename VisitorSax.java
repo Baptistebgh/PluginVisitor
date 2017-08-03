@@ -24,8 +24,6 @@ public class VisitorSax extends DefaultHandler{
    //Nous nous servirons de cette variable plus tard
 
    private String node = null;
-  
-
 
    //début du parsing
 
@@ -40,8 +38,7 @@ public class VisitorSax extends DefaultHandler{
       
 
    } 
-   
-   
+    
    /**
 
     * Redéfinition de la méthode pour intercepter les événements
@@ -93,9 +90,7 @@ public class VisitorSax extends DefaultHandler{
 
    }
    
-   public void characters(char[] ch, int start, int end) throws SAXException {
-
-	   
+   public void characters(char[] ch, int start, int end) throws SAXException {	   
 	   
 	   if (node.equals("application-class")) {
 	   compteur+=1;
@@ -150,10 +145,6 @@ public class VisitorSax extends DefaultHandler{
     	   node="";
        }
        
-
-      
-       
 	   }
-
 
 }
