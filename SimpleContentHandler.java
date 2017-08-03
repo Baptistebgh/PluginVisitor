@@ -1,11 +1,3 @@
-/*
- * Created on 2 nov. 03
- *
- * To change the template for this generated file go to
- * Window>Preferences>Java>Code Generation>Code and Comments
- */
-
-
 import org.xml.sax.*;
 import org.xml.sax.helpers.LocatorImpl;
 
@@ -159,10 +151,7 @@ public class SimpleContentHandler implements ContentHandler {
          * en ayez besoin dans vos traitements.
          * @see org.xml.sax.ContentHandler#skippedEntity(java.lang.String)
          */
-        public void skippedEntity(String arg0) throws SAXException {
-                // Je ne fais rien, ce qui se passe n'est pas franchement normal.
-                // Pour eviter cet evenement, le mieux est quand meme de specifier une DTD pour vos
-                // documents XML et de les faire valider par votre parser.              
+        public void skippedEntity(String arg0) throws SAXException {            
         }
 
         private Locator locator;
