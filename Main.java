@@ -272,7 +272,7 @@ public class Main {
       	for(int k =0; k<xmlH.daemon;k++){
       		float d = (float)mapCount.get(QQ[k]);
 
-      		resultat = statement.executeUpdate( "INSERT INTO lutece_visitor ( plugin_name, metric_name, metric_type, metric_value) VALUES ('"+V+"', 'daemon', '"+xmlH.test[500+k]+"','"+(k+1)+"');" );
+      		resultat = statement.executeUpdate( "INSERT INTO lutece_visitor ( plugin_name, metric_name, metric_type, metric_value) VALUES ('"+V+"', 'daemon', '"+xmlH.test[500+k].trim()+"','"+(k+1)+"');" );
       	}
       	resultat = statement.executeUpdate( "INSERT INTO lutece_visitor ( plugin_name, metric_name, metric_type, metric_value) VALUES ('"+V+"', 'Number of rbac', '"+"rbac"+"','"+xmlH.rbac+"');" );
       	for(int k =0; k<xmlH.rbac;k++){
