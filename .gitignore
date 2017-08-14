@@ -1,3 +1,25 @@
+<<<<<<< HEAD
 /Arborescence.class
 /LineCount.class
 /test.class
+=======
+/FilesStructure.class
+/Main.class
+/MyXMLHandler.class
+/SimpleContentHandler.class
+/SimpleSaxParser.class
+/Visitable.class
+/Visitor.class
+/VisitorClass.class
+/VisitorCompteur$1.class
+/VisitorCompteur.class
+/VisitorFiles$1.class
+/VisitorFiles.class
+/VisitorPlugin.class
+/VisitorSax.class
+/VisitorSize$1.class
+/VisitorSize.class
+/VisitorStatic.class
+/VisitorTotal.class
+/dowloadgit.class
+>>>>>>> dev
